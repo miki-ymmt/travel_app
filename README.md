@@ -39,7 +39,7 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 
 ## ■　サービスの差別化ポイント・推しポイント
 【比較したサービス①】バックパッカーのための旅行準備アプリ「TABIGINNER」現在は利用不可
-[github](https://github.com/Moeno-Takahashi/TABIGINNER?tab=readme-ov-file)
+[github](https://github.com/Moeno-Takahashi/TABIGINNER?tab=readme-ov-file)<br>
 【差別化ポイント】
 - スケジュールを作成した際に選んだ国に応じたTo Doリストを表示するので、ユーザーが１から自分でTo Doリストを作成する手間が省ける
 - 持ち物やタスクのみだけでは、初心者が海外に行く時の不安を解消できない
