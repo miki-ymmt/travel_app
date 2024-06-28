@@ -105,3 +105,6 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 
 ## ■　画面遷移図
 Figma : https://www.figma.com/design/QKIyXAAOP5Dnpoj6YVGGUr/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C%E3%80%80%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=SndTnfsjH8ZY2SJF-1
+
+## ■　ER図
+https://dbdiagram.io/d/卒制ER図-667b867c9939893dae4597c8
