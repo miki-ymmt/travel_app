@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgresql_data:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d myapp_development -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && ./bin/dev"
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/myapp
+      - bundle_data:/usr/local/bundle:cached
+      - node_modules:/myapp/node_modules
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  bundle_data:
+  postgresql_data:
+  node_modules:
