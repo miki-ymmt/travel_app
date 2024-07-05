@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="flex flex-col justify-center items-center min-h-screen">
+      <h1 class="text-3xl font-bold mb-6">ログイン</h1>
+      <%= form_with url: login_path, local: true do |form| %>
+        <div class="mb-8">
+          <%= form.label :email, "メールアドレス", class: "block text-lg font-medium text-gray-700" %>
+          <%= form.email_field :email, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+        </div>
+        <div class="mb-8">
+          <%= form.label :password, "パスワード", class: "block text-lg font-medium text-gray-700" %>
+          <%= form.password_field :password, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+        </div>
+        <div class="mb-8 flex justify-center">
+          <%= form.submit "ログイン", class: "btn btn-secondary rounded mt-8" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-issue #
+Closes #
 
 ## 概要
 

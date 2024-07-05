@@ -1,6 +1,8 @@
 <div class="navbar bg-purple-300">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">Travel Starter</a>
+    <%= link_to root_path, class: "btn btn-ghost text-xl" do %>
+    Travel Starter
+    <% end %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
@@ -8,8 +10,8 @@
         <details class="relative">
           <summary>MENU</summary>
           <ul class="absolute right-0 bg-base-100 rounded-t-none p-2 mt-1 w-48 shadow-lg">
-            <li><a>アカウント登録</a></li>
-            <li><a>ログイン</a></li>
+            <li><%= link_to "アカウント登録", new_user_path %></li>
+            <li><%= link_to "ログイン", login_path %></li>
           </ul>
         </details>
       </li>
