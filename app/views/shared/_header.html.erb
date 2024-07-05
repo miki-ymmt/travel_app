@@ -1,16 +1,18 @@
 <div class="navbar bg-purple-300">
   <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+    <%= link_to root_path, class: "btn btn-ghost text-xl" do %>
+    Travel Starter
+    <% end %>
   </div>
   <div class="flex-none">
     <ul class="menu menu-horizontal px-1">
       <li>
-        <details>
-          <summary>MENU</summary>
-          <ul class="bg-base-100 rounded-t-none p-2">
-            <li><a>ログアウト</a></li>
-          </ul>
-        </details>
+      <details class="relative">
+      <summary>MENU</summary>
+      <ul class="absolute right-0 bg-base-100 rounded-t-none p-2 mt-1 w-48 shadow-lg">
+        <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
+      </ul>
+    </details>
       </li>
     </ul>
   </div>
