@@ -8,7 +8,6 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      auto_login(@user)
       redirect_to home_path, notice: "ログインしました"
     else
       flash.now[:alert] = "ログインに失敗しました"
