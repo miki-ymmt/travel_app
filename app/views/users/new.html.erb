@@ -3,6 +3,7 @@
     <div class="flex flex-col justify-center items-center min-h-screen">
       <h1 class="text-3xl font-bold mb-6">新規ユーザー登録</h1>
       <%= form_with model: @user, local: true do |form| %>
+        <%= render 'shared/error_messages', object: form.object %>
         <div class="mb-8">
           <%= form.label :name, "名前", class: "block text-lg font-medium text-gray-700"  %>
           <%= form.text_field :name, placeholder: "10文字以下", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
