@@ -1,0 +1,5 @@
+<turbo-stream action="replace" target="todo_<%= @todo.id %>">
+  <template>
+    <%= render partial: "trips/todo", locals: { todo: @todo } %>
+  </template>
+</turbo-stream>
