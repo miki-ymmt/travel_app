@@ -1,0 +1,26 @@
+<div class="container mx-auto mt-20 min-h-screen">
+  <h1 class="text-3xl font-bold text-center mb-12">旅の編集</h1>
+  <div class="card bg-base-100 shadow-xl p-8 rounded max-w-md mx-auto mt-10">
+    <%= form_with(model: @trip, local: true) do |form| %>
+      <div class="mb-4 text-sm md:text-lg mt-6">
+        <%= form.label :destination, "行き先", class: "block text-gray-700 text-xl font-semibold mb-2" %>
+        <%= form.select :destination, options_for_select(["アメリカ(ハワイを含む)", "オーストラリア", "タイ", "イタリア", "イギリス", "フランス", "韓国", "中国", "カナダ", "スペイン", "ドイツ", "シンガポール", "マレーシア", "その他の国"]), {}, class: "form-select block w-full mt-1 sm:text-base" %>
+      </div>
+
+      <div class="flex flex-wrap mb-4 text-sm md:text-lg mt-20">
+        <div class="w-full md:w-1/2 pr-2 mb-4 md:mb-0">
+          <%= form.label :departure_date, "出発日", class: "block text-gray-700 text-xl font-semibold mb-2" %>
+          <%= form.date_field :departure_date, class: "form-input block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base" %>
+        </div>
+        <div class="w-full md:w-1/2 pl-2">
+          <%= form.label :return_date, "帰国日", class: "block text-gray-700 text-xl font-semibold mb-2" %>
+          <%= form.date_field :return_date, class: "form-input block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base" %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <%= form.submit "更新", class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4" %>
+      </div>
+    <% end %>
+  </div>
+</div>

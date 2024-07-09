@@ -1,0 +1,15 @@
+<%= form_with(model: [ @trip, todo ], url: add_todo_trip_path(@trip), data: { turbo_frame: "todo-form" }) do |f| %>
+  <div class="flex items-center space-x-2">
+    <div class="flex-grow">
+      <div class="form-group mt-6">
+        <%= f.label :content, "TO DOの追加" %>
+        <%= f.text_field :content, class: "input input-bordered" %>
+      </div>
+    </div>
+    <div>
+      <div class="form-group">
+          <%= f.submit "追加", class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" %>
+      </div>
+    </div>
+  </div>
+<% end %>

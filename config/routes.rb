@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
   resources :users
+  resources :trips do
+    member do
+      post 'add_todo'
+      patch 'update_todo/:todo_id', to: 'trips#update_todo', as: :update_todo #特定の trip に対してToDoを更新するアクション
+      delete 'destroy_todo/:todo_id', to: 'trips#destroy_todo', as: :destroy_todo #特定の trip に対してToDoを削除するアクション
+    end
+  end
   get 'login' => 'user_sessions#new', as: :login
   post 'login' => 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'  #ログアウト機能

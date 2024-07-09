@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_05_064514) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_07_061716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_05_064514) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "content", null: false
+    t.boolean "done", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_todos_on_trip_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "destination", null: false
+    t.date "departure_date", null: false
+    t.date "return_date", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,4 +50,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_05_064514) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "todos", "trips"
+  add_foreign_key "trips", "users"
 end

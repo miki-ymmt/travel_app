@@ -1,0 +1,27 @@
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <h1 class="text-2xl sm:text-3xl font-bold mb-10 mt-20 flex justify-center"><%= current_user.name %>さんの旅一覧</h1>
+  <div class="flex flex-wrap justify-center">
+    <!-- 旅行の一覧を表示 -->
+    <% if @trips.any? %>
+      <% @trips.each do |trip| %>
+        <div class="w-full sm:w-1/2 p-4">
+          <div class="card bg-base-100 shadow-lg rounded-lg overflow-hidden">
+            <div class="card-body flex-grow p-6">
+              <h2 class="card-title"><%= trip.destination %>への旅</h2>
+              <p class="text-gray-700 text-sm">出発日: <%= trip.departure_date %></p>
+              <p class="text-gray-700 text-sm">帰国日: <%= trip.return_date %></p>
+              <div class="card-actions mt-4 justify-end items-end">
+                <%= link_to "もっと見る", trip_path(trip), class: "btn btn-accent rounded shadow-lg" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-center mt-6">まだ旅行の予定がありません。</p>
+    <% end %>
+  </div>
+  <div class="mt-8">
+    <%= link_to "ホームへ", home_path, class: "bg-yellow-300 hover:bg-yellow-500 btn btn-primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" %>
+  </div>
+</div>
