@@ -49,6 +49,9 @@ gem "bootsnap", require: false
 
 gem 'sorcery'
 gem 'carrierwave', '~> 3.0'
+gem 'dotenv', groups: [:development, :test]
+gem 'fog-aws'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
