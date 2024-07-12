@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "passport-photo" do %>
+  <div id="passport-photo" class="mt-8 text-center">
+    <% if @passport.photo.present? %>
+      <div class="mt-8 text-center">
+        <%= image_tag @passport.photo.url, class: "rounded shadow-lg w-48 sm:w-64 inline-block" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
