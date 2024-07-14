@@ -5,7 +5,7 @@
     <% if @trips.any? %>
       <% @trips.each do |trip| %>
         <div class="w-full sm:w-1/2 p-4">
-          <div class="card bg-base-100 shadow-lg rounded-lg overflow-hidden">
+          <div class="card bg-blue-50 shadow-lg rounded-lg overflow-hidden">
             <div class="card-body flex-grow p-6">
               <h2 class="card-title"><%= trip.destination %>への旅</h2>
               <p class="text-gray-700 text-sm">出発日: <%= trip.departure_date %></p>

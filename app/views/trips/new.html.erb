@@ -1,6 +1,6 @@
 <div class="container mx-auto mt-20 min-h-screen">
   <h1 class="text-3xl font-bold text-center mb-12">旅を登録しましょう！</h1>
-  <div class="card bg-base-100 shadow-xl p-8 rounded max-w-md mx-auto mt-10">
+  <div class="card bg-blue-50 shadow-xl p-8 rounded max-w-md mx-auto mt-10">
     <%= form_with(model: @trip, local: true) do |form| %>
       <div class="mb-4 text-sm md:text-lg mt-6">
         <%= form.label :destination, "行き先", class: "block text-gray-700 text-xl font-semibold mb-2" %>

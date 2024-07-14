@@ -9,7 +9,7 @@
     <%= image_tag "plan.png", class: "w-20 mx-auto" %>
     SCHEDULE
     <% end %>
-    <%= link_to "#", class: "block p-4 bg-pink-200 text-center rounded shadow" do %>
+    <%= link_to flights_path, class: "block p-4 bg-pink-200 text-center rounded shadow" do %>
     <%= image_tag "flight.png", class: "w-20 mx-auto" %>
     FLIGHT
     <% end %>
@@ -17,7 +17,7 @@
 
   <!-- メインコンテンツ -->
   <div class="w-3/4 ml-4 p-6 rounded text-center">
-    <h1 class="text-md lg:text-3xl font-bold mb-6 font-bold">
+    <h1 class="text-md sm:text-3xl font-bold mb-6 font-bold">
     さあ！<br>
     まずは旅の予定を立てましょう！</h1>
     <%= image_tag "home.png", class: "w-1/2 mx-auto mb-8" %>

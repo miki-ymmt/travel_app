@@ -2,7 +2,7 @@
   <div class="row">
     <div class="flex flex-col justify-center items-center min-h-screen">
       <h1 class="text-3xl font-bold mb-6">旅の詳細</h1>
-      <div class="card bg-base-100 w-96 shadow-xl">
+      <div class="card bg-blue-50 w-96 shadow-xl">
         <figure class="px-10 pt-10">
           <div class="card-body items-center text-center">
             <p class="text-lg font-bold mb-4">行き先: <%= @trip.destination %></p>
@@ -17,7 +17,7 @@
               <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
             </form>
          <h3 class="text-lg font-bold mb-4"><%= current_user.name %>のTO DO</h3>
-         <div class="border-t border-dotted border-2 border-blue-800 mb-10"></div>
+         <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
         <turbo-frame id="todos">
           <ul id="todo-list">
            <% @trip.todos.each do |todo| %>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post 'login' => 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'  #ログアウト機能
   get 'home' => 'home#index'
+  get 'flights' => 'flights#index'
   #resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
