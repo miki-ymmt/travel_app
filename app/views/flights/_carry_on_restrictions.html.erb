@@ -1,0 +1,54 @@
+<!-- Open the modal using ID.showModal() method -->
+<button class="bg-yellow-300 hover:bg-yellow-500 btn btn-wide px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4" onclick="carry_on_modal.showModal()">
+  <i class="fas fa-suitcase"></i>機内持ち込み制限品について
+</button>
+<dialog id="carry_on_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box w-full max-w-7xl h-auto">
+  <h3 class="text-lg font-bold mb-6">国際線 機内持ち込み制限品について</h3>
+    <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
+    <p class="py-4 leading-loose">
+    機内には保安上の理由で<br>
+    持ち込みできるものが制限されています。<br>
+    ぜひチェックしておきましょう！
+    </p>
+    <div class="flex justify-center">
+      <div class="w-1/2 p-4">
+        <h4 class="text:sm sm:text-md font-bold badge badge-accent">持ち込めるもの</h4>
+        <ul class="list-disc text-left mt-6 space-y-2">
+          <li>パソコン、タブレット</li>
+          <li>カメラ</li>
+          <li>携帯電話</li>
+          <li>モバイルバッテリー (預け入れ不可)</li>
+          <li>ワイヤレスイヤホン（Bluetooth接続のもの）</li>
+          <li>書籍</li>
+          <li>小型の傘</li>
+          <li>液体物（ジッパー付き100ml以下のプラスチック容器に入れられたもの）</li>
+          <li>保安検査後の空港免税店で購入した液体（香水、化粧品、飲み物）</li>
+          <li>ベビーフード/ベビーミルク(100mlの制限なし)</li>
+          <li>食べ物（おにぎり、スナックなど)</li>
+          <li>爪切り</li>
+          <li>化粧用の小さなハサミ</li>
+        </ul>
+      </div>
+      <div class="w-1/2 p-4">
+        <h4 class="text:sm sm:text-md font-bold badge badge-secondary">持ち込めないもの</h4>
+        <ul class="list-disc text-left mt-6 space-y-2">
+          <li>液体物（100mlを超えるもの）</li>
+          <li>飲料（500mlのペットボトルなど）</li>
+          <li>刃物（ナイフ、ハサミなど）</li>
+          <li>可燃性物質（ライター、スプレー缶など）</li>
+          <li>スポーツ用品（バット、ゴルフクラブなど）</li>
+          <li>工業用工具（ドライバー、レンチなど）</li>
+          <li>花火/クラッカー(預け入れも不可) </li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">✕</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
