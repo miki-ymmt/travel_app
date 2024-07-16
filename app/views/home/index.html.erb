@@ -1,26 +1,25 @@
-<div class="container mx-auto min-h-screen mt-10 flex">
+<div class="container mx-auto min-h-screen mt-20 flex">
   <!-- 左側のボタン  -->
-  <div class="w-1/4 flex flex-col space-y-10">
-    <%= link_to new_passport_path, class: "block p-4 bg-pink-200 text-center rounded shadow" do %>
-    <%= image_tag "passport.png", class: "w-20 mx-auto" %>
+  <div class="w-1/4 flex flex-col space-y-10 mt-20">
+    <%= link_to new_passport_path, class: "inline-block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto" do %>
+    <%= image_tag "passport.png", class: "w-20 mx-auto mb-2" %>
     PASSPORT
     <% end %>
-    <%= link_to trips_path, class: "block p-4 bg-pink-200 text-center rounded shadow" do %>
-    <%= image_tag "plan.png", class: "w-20 mx-auto" %>
+    <%= link_to trips_path, class: "block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto" do %>
+    <%= image_tag "plan.png", class: "w-20 mx-auto mb-2" %>
     SCHEDULE
     <% end %>
-    <%= link_to flights_path, class: "block p-4 bg-pink-200 text-center rounded shadow" do %>
-    <%= image_tag "flight.png", class: "w-20 mx-auto" %>
+    <%= link_to flights_path, class: "block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto" do %>
+    <%= image_tag "flight.png", class: "w-20 mx-auto mb-2" %>
     FLIGHT
     <% end %>
   </div>
 
   <!-- メインコンテンツ -->
   <div class="w-3/4 ml-4 p-6 rounded text-center">
-    <h1 class="text-md sm:text-3xl font-bold mb-6 font-bold">
-    さあ！<br>
+    <h1 class="text-md sm:text-3xl font-bold mb-6 font-bold mt-18">
     まずは旅の予定を立てましょう！</h1>
-    <%= image_tag "home.png", class: "w-1/2 mx-auto mb-8" %>
+    <%= image_tag "home.png", class: "w-full sm:w-1/2 mx-auto mb-8" %>
     <%= link_to "旅を登録する", new_trip_path, class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" %>
   </div>
 </div>
