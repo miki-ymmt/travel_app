@@ -1,7 +1,7 @@
-<div class="navbar bg-purple-300">
+<div class="navbar bg-cerulean text-white py-4">
   <div class="flex-1">
-    <%= link_to home_path, class: "btn btn-ghost text-xl" do %>
-    Travel Starter
+    <%= link_to home_path, class: "btn btn-ghost p-0" do %>
+      <%= image_tag "logo.png", class: "w-24 h-16" %>
     <% end %>
   </div>
   <div class="flex-none">
@@ -9,7 +9,7 @@
       <li>
       <details class="relative">
       <summary>MENU</summary>
-      <ul class="absolute right-0 bg-base-100 rounded-t-none p-2 mt-1 w-48 shadow-lg">
+      <ul class="absolute right-0 bg-base-100 rounded p-2 mt-1 w-48 shadow-lg text-blue-950">
         <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
       </ul>
     </details>

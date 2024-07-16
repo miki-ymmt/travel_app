@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+    .font-caveat {
+      font-family: "Caveat", cursive;
+      font-optical-sizing: auto;
+      font-weight: 500;
+      font-style: normal;
+    }
+    .font-zen {
+        font-family: "Zen Maru Gothic", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+}
+
+.bg-sky {
+    background-image: url('sky_1.png');
+    background-size: cover;
+    background-position: center;
+}

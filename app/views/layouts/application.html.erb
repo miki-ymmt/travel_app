@@ -10,9 +10,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <%= stylesheet_link_tag 'lightbox.min' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
   </head>
 
-  <body class="bg-purple-50 text-gray-700">
+  <body class="bg-icicle text-gray-700 font-zen">
   <% if logged_in? %>
     <%= render 'shared/header' %>
   <% else %>
