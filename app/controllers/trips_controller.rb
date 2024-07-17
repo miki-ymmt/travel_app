@@ -39,8 +39,10 @@ class TripsController < ApplicationController
 
   def update
     if @trip.update(trip_params)  # 旅行情報を更新
-      @trip.todos.destroy_all  # 旅行に紐づくToDoを全て削除
-      add_default_todos(@trip)  # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
+      ActiveRecord::Base.transaction do
+        @trip.todos.destroy_all  # 旅行に紐づくToDoを全て削除
+        add_default_todos(@trip)  # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
+      end
       redirect_to @trip, notice: "旅行情報が更新されました"
     else
       render :edit
