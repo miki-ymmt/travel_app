@@ -13,6 +13,13 @@
           <%= form.submit "ログイン", class: "btn btn-secondary rounded mt-8 shadow-lg w-full" %>
         </div>
       <% end %>
+      <div class="text-center text-sm">
+      または
+      <div>
+      <!-- Googleログインボタンの表示 -->
+      <%= link_to auth_at_provider_path(provider: :google), data: { turbo: false } do %>
+        <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-3/5 mx-auto py-5" %>
+      <% end %>
     </div>
   </div>
 </div>

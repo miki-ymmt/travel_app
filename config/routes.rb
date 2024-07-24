@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'  #ログアウト機能
   get 'home' => 'home#index'
   get 'flights' => 'flights#index'
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback"
+  get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
   #resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
