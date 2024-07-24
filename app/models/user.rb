@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   attr_accessor :password_confirmation
+  has_many :authenticates, :dependent => :destroy
+  accepts_nested_attributes_for :authenticates
   has_many :trips, dependent: :destroy
   has_many :todos, through: :trips
   has_one :passport, dependent: :destroy

@@ -24,7 +24,17 @@
           <%= form.submit "登録", class: "btn btn-secondary rounded mt-4 w-full" %>
         </div>
       <% end %>
+      <%# Google 認証リンク %>
+      <div class="text-center text-sm">
+      または
+      <div>
+      <!-- Google ログイン -->
+      <%= link_to auth_at_provider_path(provider: :google), data: { turbo: false } do %>
+      <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-3/5 mx-auto py-5" %>
+      <% end %>
+      <div class="text-center text-sm">
       <%= link_to "ログインはこちら", login_path, class: "hover:bg-blue-200 opacity-75 rounded-lg px-4 py-2" %>
+      </div
     </div>
   </div>
 </div>

@@ -51,6 +51,7 @@ gem 'sorcery'
 gem 'carrierwave', '~> 3.0'
 gem 'dotenv', groups: [:development, :test]
 gem 'fog-aws'
+gem 'config'
 
 
 group :development, :test do
