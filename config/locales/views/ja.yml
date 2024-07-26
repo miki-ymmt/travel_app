@@ -1,0 +1,36 @@
+ja:
+  helpers:
+  submit:
+    user:
+      create: "登録"
+      update: "更新"
+  label:
+    user:
+      name: "名前"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード（確認）"
+  user_sessions:
+    new:
+      title: "ログイン"
+      email: "メールアドレス"
+      password: "パスワード"
+      submit: "ログイン"
+    create:
+      success: "ログインしました。"
+      failure: "ログインに失敗しました。"
+    destroy:
+      success: "ログアウトしました。"
+      failure: "ログアウトに失敗しました。"
+  users:
+    new:
+      title: "ユーザー登録"
+      name: "名前"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード（確認）"
+      submit: "登録"
+  header:
+    login: "ログイン"
+    logout: "ログアウト"
+    signup: "新規登録"
