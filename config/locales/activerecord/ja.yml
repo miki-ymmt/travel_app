@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+  activemodel:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "パスワードを入力してください"
+              too_short: "パスワードは4文字以上で入力してください"
+              too_long: "パスワードは8文字以内で入力してください"
+            password_confirmation:
+              confirmation: "パスワードが一致しません"
+            name:
+              blank: "名前を入力してください"
+              too_long: "名前は10文字以内で入力してください"
+            email:
+              blank: "メールアドレスを入力してください"
+              format: "メールアドレスの形式で入力してください"
+              taken: "メールアドレスは既に使用されています"
+      messages:
+        blank: "を入力してください"
+        confirmation: "が一致しません"
+        extension_allowlist_error: "のファイル拡張子は許可されていません"

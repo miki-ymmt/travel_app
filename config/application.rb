@@ -28,5 +28,7 @@ module Myapp
       g.test_framework false     # test ファイルを作成しない
       g.skip_routes true         # ルーティングの記述を作成しない
     end
+    config.i18n.default_locale = :ja
+    config.i18n.load_path+=Dir[Rails.root.join('config','locales','**','*.yml').to_s]
   end
 end
