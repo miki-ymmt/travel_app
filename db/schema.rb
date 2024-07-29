@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_24_115751) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_27_131717) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,7 +67,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_24_115751) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "weathers", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.string "destination", null: false
+    t.float "temperature", null: false
+    t.string "description", null: false
+    t.datetime "datetime", null: false
+    t.datetime "fetched_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_weathers_on_trip_id"
+  end
+
   add_foreign_key "passports", "users"
   add_foreign_key "todos", "trips"
   add_foreign_key "trips", "users"
+  add_foreign_key "weathers", "trips"
 end

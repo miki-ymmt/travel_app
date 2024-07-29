@@ -4,9 +4,9 @@
     <!-- 旅行の一覧を表示 -->
     <% if @trips.any? %>
       <% @trips.each do |trip| %>
-        <div class="w-full sm:w-3/4 lg:w-2/3 xl:w-1/2 p-4">
+        <div class="w-full sm:w-1/2 lg:w-3/5 xl:w-3/4 p-4">
           <div class="card bg-blue-50 shadow-lg rounded-lg overflow-hidden max-w-xl mx-auto">
-            <div class="card-body flex-grow">
+            <div class="card-body flex-grow p-6">
               <h2 class="card-title"><%= trip.destination %>への旅</h2>
               <p class="text-gray-700 text-sm">出発日: <%= trip.departure_date %></p>
               <p class="text-gray-700 text-sm">帰国日: <%= trip.return_date %></p>

@@ -53,6 +53,8 @@ gem 'dotenv', groups: [:development, :test]
 gem 'fog-aws'
 gem 'config'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'httparty', '~> 0.22.0'
+
 
 
 group :development, :test do

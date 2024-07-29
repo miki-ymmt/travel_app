@@ -12,7 +12,7 @@ class OauthsController < ApplicationController
     Rails.logger.debug "Callback Provider: #{provider}"
     Rails.logger.debug "Redirect URI: #{ENV['GOOGLE_CALLBACK_URL']}"
     if (@user = login_from(provider))
-      Rails.logger.debug "User logged in successfully: #{@user.inspect}"
+      puts "Logged in from provider: #{@user.inspect}" # デバッグ出力
       reset_session
       auto_login(@user)
       redirect_to home_path, notice: "Googleアカウントでログインしました"

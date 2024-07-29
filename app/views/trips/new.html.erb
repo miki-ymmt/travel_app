@@ -4,7 +4,7 @@
     <%= form_with(model: @trip, local: true) do |form| %>
       <div class="mb-4 text-sm md:text-lg mt-6">
         <%= form.label :destination, "行き先", class: "block text-gray-700 text-xl font-semibold mb-2" %>
-        <%= form.select :destination, options_for_select(["アメリカ(ハワイを含む)", "オーストラリア", "タイ", "イタリア", "イギリス", "フランス", "韓国", "中国", "カナダ", "スペイン", "ドイツ", "シンガポール", "マレーシア", "その他の国"]), {}, class: "form-select block w-full mt-1 sm:text-base" %>
+        <%= form.select :destination, options_for_select(["ロサンゼルス", "ニューヨーク", "ハワイ", "シドニー", "バンコク", "ローマ", "ロンドン", "パリ", "ソウル", "上海", "台北", "マドリード", "ミュンヘン", "シンガポール", "クアラルンプール", "その他の国"]), {}, class: "form-select block w-full mt-1 sm:text-base" %>
       </div>
 
       <div class="flex flex-wrap mb-4 text-sm md:text-lg mt-20">
