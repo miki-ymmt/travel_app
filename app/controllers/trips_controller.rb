@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
 
   def index
-    @trips = current_user.trips
+    @trips = current_user.trips.order(:departure_date)
   end
 
   def new
@@ -42,6 +42,7 @@ class TripsController < ApplicationController
       ActiveRecord::Base.transaction do
         @trip.todos.destroy_all  # 旅行に紐づくToDoを全て削除
         add_default_todos(@trip)  # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
+        @trip.update_weather_if_destination_changed  # 旅行先が変更された場合は天気情報を更新
       end
       redirect_to @trip, notice: "旅行情報が更新されました"
     else
@@ -123,7 +124,7 @@ class TripsController < ApplicationController
     ]
 
     case destination
-    when "アメリカ(ハワイを含む)"
+    when "ロサンゼルス"
       common_items + [
         "ESTAの申請",
         "帽子の用意",
@@ -133,7 +134,29 @@ class TripsController < ApplicationController
         "ドルの用意（クレジットカードも含む）",
         "変換プラグの用意（タイプA）"
       ]
-    when "オーストラリア"
+    when "ニューヨーク"
+      common_items + [
+        "ESTAの申請",
+        "帽子の用意",
+        "サングラスの用意",
+        "日焼け止めの用意",
+        "カメラの用意",
+        "ドルの用意（クレジットカードも含む）",
+        "変換プラグの用意（タイプA）"
+      ]
+    when "ハワイ"
+      common_items + [
+        "ESTAの申請",
+        "帽子の用意",
+        "サングラスの用意",
+        "日焼け止めの用意",
+        "カメラの用意",
+        "ドルの用意（クレジットカードも含む）",
+        "変換プラグの用意（タイプA）",
+        "水着の用意",
+        "ビーチサンダルの用意"
+      ]
+    when "シドニー"
       common_items + [
         "ETAビザの申請",
         "帽子の用意",
@@ -143,7 +166,7 @@ class TripsController < ApplicationController
         "オーストラリアドルの用意（クレジットカードも含む）",
         "変換プラグの用意（タイプO）"
       ]
-    when "タイ"
+    when "バンコク"
       common_items + [
         "虫除けスプレーの用意",
         "日焼け止めの用意",
@@ -154,15 +177,16 @@ class TripsController < ApplicationController
         "タイバーツの用意（クレジットカードも含む）",
         "変換プラグの用意（タイプA, B, C, O）"
       ]
-    when "イタリア"
+    when "ローマ"
       common_items + [
         "変換プラグの用意（タイプC）",
         "薄手の服の用意",
         "歩きやすい靴の用意",
         "カメラの用意",
-        "ユーロの用意（クレジットカードも含む）"
+        "ユーロの用意（クレジットカードも含む）",
+        "チャック付きバッグの用意"
       ]
-    when "イギリス"
+    when "ロンドン"
       common_items + [
         "変換プラグの用意（タイプG）",
         "折りたたみ傘の用意",
@@ -170,46 +194,45 @@ class TripsController < ApplicationController
         "カメラの用意",
         "ポンドの用意（クレジットカードも含む）"
       ]
-    when "フランス"
+    when "パリ"
       common_items + [
         "変換プラグの用意（タイプC）",
         "カメラの用意",
         "薄手の服の用意",
         "歩きやすい靴の用意",
-        "ユーロの用意（クレジットカードも含む）"
+        "ユーロの用意（クレジットカードも含む）",
+        "チャック付きバッグの用意"
       ]
-    when "韓国"
+    when "ソウル"
       common_items + [
         "変換プラグの用意（タイプC,SE）",
         "カメラの用意",
         "韓国ウォンの用意（クレジットカードも含む）"
       ]
-    when "中国"
+    when "上海"
       common_items + [
         "中国ビザの申請",
         "変換プラグの用意（タイプA, C, I）",
         "カメラの用意",
         "人民元の用意（クレジットカードも含む）"
       ]
-    when "カナダ"
+    when "台北"
       common_items + [
-        "eTAビザの申請",
-        "帽子の用意",
-        "サングラスの用意",
         "日焼け止めの用意",
         "カメラの用意",
-        "カナダドルの用意（クレジットカードも含む）",
-        "変換プラグの用意（タイプA, B）"
+        "台湾ドルの用意（クレジットカードも含む）",
+        "変換プラグの用意（タイプA）"
       ]
-    when "スペイン"
+    when "マドリード"
       common_items + [
         "変換プラグの用意（タイプC, F）",
         "薄手の服の用意",
         "歩きやすい靴の用意",
         "カメラの用意",
-        "ユーロの用意（クレジットカードも含む）"
+        "ユーロの用意（クレジットカードも含む）",
+        "チャック付きバッグの用意"
       ]
-    when "ドイツ"
+    when "ミュンヘン"
       common_items + [
         "変換プラグの用意（タイプC, F）",
         "暖かい服の用意",
@@ -226,7 +249,7 @@ class TripsController < ApplicationController
         "シンガポールドルの用意（クレジットカードも含む）",
         "変換プラグの用意（タイプG）"
       ]
-    when "マレーシア"
+    when "クアラルンプール"
       common_items + [
         "薄手の服の用意",
         "虫除けスプレーの用意",

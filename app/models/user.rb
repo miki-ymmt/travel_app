@@ -2,7 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   attr_accessor :password_confirmation
-  has_many :authenticates, :dependent => :destroy
+  has_many :authenticates, dependent: :destroy
   accepts_nested_attributes_for :authenticates
   has_many :trips, dependent: :destroy
   has_many :todos, through: :trips
@@ -13,4 +13,9 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true, presence: true
+
+  # 未来の旅行を取得
+  def next_trip
+    trips.where("departure_date >= ?", Date.today).order(:departure_date).first
+  end
 end
