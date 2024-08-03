@@ -1,0 +1,37 @@
+<div class="container mx-auto mt-20 min-h-screen flex flex-col">
+  <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8">AI Chatbot</h1>
+  <p class="text-center text-xs sm:text-base">旅について知りたいこと、不安なことはありませんか？</p>
+  <p class="text-center text-xs sm:text-base">AI Chatbotに質問してみましょう！</p>
+
+  <div class="card bg-blue-50 w-2/3 mx-auto flex flex-col justify-between shadow-xl rounded-lg p-6 mt-8 mb-4 flex-grow">
+    <div class="card-body text-center flex flex-col items-center justify-center flex-grow">
+      <div id="chatbox" class="mt-4 w-full space-y-4 flex-grow">
+        <div class="chat chat-start">
+          <div class="chat-image avatar">
+            <div class="w-10 h-10 rounded-full">
+              <%= image_tag "ai_bot.png", class: "w-10 h-10 rounded-full" %>
+            </div>
+          </div>
+          <div class="chat-header text-xs sm:text-base text-gray-500">
+            AI chatbot
+          </div>
+          <div class="chat-bubble max-w-xs mx-2 py-2 px-4 rounded-lg relative text-xs sm:text-base">
+            <p>こんにちは！私はAI Chatbotです。何か質問があればお気軽にどうぞ！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fixed bottom-0 left-0 right-0 bg-white p-4">
+      <%= form_with(model: @chatbot, url: chatbots_answer_path, data: { controller: "form-reset", action: "turbo:submit-end->form-reset#reset", turbo_frame: "chatbot-form" }) do |f| %>
+        <div class="form-group flex items-center space-x-4 w-full">
+          <div class="mr-2 flex-grow">
+            <%= f.text_area :question, placeholder: "聞きたい内容を入力してください", class: "input input-bordered w-full h-20 rounded text-sm" %>
+          </div>
+          <div>
+            <%= f.submit "質問する", class: "bg-purple-300 hover:bg-purple-500 btn btn primary px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
