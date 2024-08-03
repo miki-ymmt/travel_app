@@ -29,9 +29,8 @@ class ChatbotsController < ApplicationController
       @answer = "回答が見つかりませんでした"
     end
 
-    # respond_to do |format|
-    #   format.turbo_stream
-    #   format.html
-    # end
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 end
