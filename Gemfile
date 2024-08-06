@@ -55,6 +55,7 @@ gem 'config'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'httparty', '~> 0.22.0'
 gem "ruby-openai"
+gem 'line-bot-api'
 
 
 
