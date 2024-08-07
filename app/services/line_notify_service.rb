@@ -55,6 +55,7 @@ class LineNotifyService
         end
       else
         puts "No LINE user ID found for user: #{user.id}"
+      end
     end
   end
 end
