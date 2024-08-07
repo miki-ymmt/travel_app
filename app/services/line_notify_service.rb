@@ -49,3 +49,4 @@ class LineNotifyService
     end
   end
 end
+
