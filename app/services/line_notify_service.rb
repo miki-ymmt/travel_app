@@ -30,11 +30,13 @@ class LineNotifyService
     trips.each do |trip|
       user = trip.user
       puts "Processing trip for user: #{user.id}"
-      next unless user.line_user
-      puts "User has LINE user: #{user.line_user.line_user_id}"
+      if user.line_user
+        puts "User has LINE user: #{user.line_user.line_user_id}"
 
-      days_left = (trip.departure_date - Date.today).to_i
-      message = case days_left
+        days_left = (trip.departure_date - Date.today).to_i
+        puts "Days left for trip: #{days_left}"
+
+        message = case days_left
                 when 7
                   "#{user.name}さん、旅の出発まであと一週間です！準備はいかがですか？パスポートやビザの有効期限を確認しましたか？また、旅行先の天気を確認して、適切な服装を準備しましょう。現地の文化やマナーについても調べておくと安心ですよ✨"
                 when 3
@@ -45,12 +47,14 @@ class LineNotifyService
                   nil
                 end
 
-      if message
-        puts "Sending message to #{user.line_user.line_user_id}: #{message}"
-        notify(user.line_user.line_user_id, message)
+        if message
+          puts "Sending message to #{user.line_user.line_user_id}: #{message}"
+          notify(user.line_user.line_user_id, message)
+        else
+          puts "No message to send for #{user.name} with days_left: #{days_left}"
+        end
       else
-        puts "No message to send for #{user.name} with days_left: #{days_left}"
-      end
+        puts "No LINE user ID found for user: #{user.id}"
     end
   end
 end
