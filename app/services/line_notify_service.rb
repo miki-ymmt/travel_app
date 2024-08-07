@@ -10,12 +10,16 @@ class LineNotifyService
   end
 
   def notify(line_user_id, message) #LINEユーザーにメッセージを送信
-    message = {
+    message_payload = {
         type: 'text',
         text: message
     }
-    response = @client.push_message(line_user_id, message)
-    puts response.read_body if response.code != 200 #エラーが発生した場合はエラーメッセージを出力
+    response = @client.push_message(line_user_id, message_payload)
+    if response.code != 200 #エラーが発生した場合はエラーメッセージを出力
+      puts "Error: #{response.read_body}"
+    else
+      puts "Message sent successfully to #{line_user_id}: #{message}"
+    end
   end
 
   def send_travel_notifications #旅行の出発日に応じてLINEユーザーに通知を送信
@@ -36,7 +40,12 @@ class LineNotifyService
                   nil
                 end
 
-      notify(user.line_user.line_user_id, message) if message
+      if message
+        puts "Sending message to #{user.line_user.line_user_id}: #{message}"
+        notify(user.line_user.line_user_id, message)
+      else
+        puts "No message to send for #{user.name} with days_left: #{days_left}"
+      end
     end
   end
 end
