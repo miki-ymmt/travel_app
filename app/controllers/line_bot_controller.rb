@@ -12,11 +12,16 @@ class LineBotController < ApplicationController
       case event
       when Line::Bot::Event::Follow #ユーザーがLINE公式アカウントを友達追加したとき
         line_user_id = event['source']['userId']
+        puts "Received LINE user ID: #{line_user_id}" # デバッグ用ログ
+
         # ここでline_user_idをデータベースに保存するロジックを追加
         user = current_user #ログインしているユーザーを取得
         if user #ログインしているユーザーが存在する場合
+          puts "Current user ID: #{user.id}" # デバッグ用ログ
           user.create_line_user(line_user_id: line_user_id) #新しいレコードを作成し、ユーザーとLINEユーザーを関連付ける
+          puts "LINE user created for user ID: #{user.id}" # デバッグ用ログ
         else
+          puts "No current user found" # デバッグ用ログ
           message = {
             type: 'text',
             text: 'ユーザーを特定できませんでした。再度お試しください。'
