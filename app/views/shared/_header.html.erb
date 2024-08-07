@@ -9,7 +9,12 @@
       <li>
       <details class="relative">
       <summary>MENU</summary>
-      <ul class="absolute right-0 bg-base-100 rounded p-2 mt-1 w-48 shadow-lg text-blue-950">
+      <ul class="absolute right-0 bg-base-100 rounded p-2 mt-1 w-48 shadow-lg text-blue-950 z-50">
+        <li><%= link_to "PASSPORT", new_passport_path %></li>
+        <li><%= link_to "SCHEDULE", trips_path %></li>
+        <li><%= link_to "FLIGHT", flights_path %></li>
+        <li><%= link_to "AI CHATBOT", chatbots_ask_path %></li>
+        <li><%= link_to "ホーム", home_path %></li>
         <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
       </ul>
     </details>
