@@ -1,7 +1,7 @@
 require 'line/bot'
 
 class LineNotifyService
-  def initialize # LINEクライアントを初期化
+  def initialize
     @client = Line::Bot::Client.new do |config|
       config.channel_id = ENV['LINE_CHANNEL_ID']
       config.channel_secret = ENV['LINE_CHANNEL_SECRET']
@@ -9,10 +9,10 @@ class LineNotifyService
     end
   end
 
-  def notify(line_user_id, message) # LINEユーザーにメッセージを送信
+  def notify(line_user_id, message)
     message_payload = {
-        type: 'text',
-        text: message
+      type: 'text',
+      text: message
     }
     response = @client.push_message(line_user_id, message_payload)
     if response.code != 200
@@ -22,11 +22,16 @@ class LineNotifyService
     end
   end
 
-  def send_travel_notifications # 旅行の出発日に応じてLINEユーザーに通知を送信
+  def send_travel_notifications
+    puts "Executing send_travel_notifications method"
     trips = Trip.where(departure_date: [7.days.from_now.to_date, 3.days.from_now.to_date, 1.day.from_now.to_date])
+    puts "Trips found: #{trips.size}"
+
     trips.each do |trip|
       user = trip.user
+      puts "Processing trip for user: #{user.id}"
       next unless user.line_user
+      puts "User has LINE user: #{user.line_user.line_user_id}"
 
       days_left = (trip.departure_date - Date.today).to_i
       message = case days_left
@@ -49,4 +54,3 @@ class LineNotifyService
     end
   end
 end
-
