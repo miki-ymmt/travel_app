@@ -1,76 +1,53 @@
 class LineBotController < ApplicationController
-  before_action :authenticate_user!, only: [:callback] # ユーザーがログインしていることを確認
+  protect_from_forgery except: [:callback]  # CSRF対策無効化
+  skip_before_action :require_login, only: [:callback]
+
+  def client
+    @client ||= Line::Bot::Client.new do |config|
+      config.channel_id = ENV['LINE_CHANNEL_ID']
+      config.channel_secret = ENV['LINE_CHANNEL_SECRET']
+      config.channel_token = ENV['LINE_CHANNEL_TOKEN']
+    end
+  end
 
   def callback
     body = request.body.read
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
       head :bad_request
-      return
     end
 
     events = client.parse_events_from(body)
     events.each do |event|
-      case event
-      when Line::Bot::Event::Follow # ユーザーがLINE公式アカウントを友達追加したとき
-        handle_follow(event)
-      when Line::Bot::Event::Message # ユーザーがメッセージを送信したとき
-        handle_message(event)
+      if event.is_a?(Line::Bot::Event::Follow) || event.is_a?(Line::Bot::Event::Message)
+        line_user_id = event['source']['userId']
+        Rails.logger.debug "Received LINE user ID: #{line_user_id}" # デバッグ用
+        session[:line_user_id] = line_user_id
+        Rails.logger.debug "Stored LINE user ID in session: #{session[:line_user_id]}" # デバッグ用
       end
     end
-
     head :ok
   end
 
-  private
-
-  def handle_follow(event)
-    line_user_id = event['source']['userId']
-    puts "Received LINE user ID: #{line_user_id}" # デバッグ用ログ
-
-    user = current_user # ログインしているユーザーを取得
-    if user # ログインしているユーザーが存在する場合
-      puts "Current user ID: #{user.id}" # デバッグ用ログ
-      user.create_line_user(line_user_id: line_user_id) # 新しいレコードを作成し、ユーザーとLINEユーザーを関連付ける
-      puts "LINE user created for user ID: #{user.id}" # デバッグ用ログ
+  def create
+    Rails.logger.debug "Session LINE user ID at the beginning of create action: #{session[:line_user_id]}" # デバッグ用
+    line_user_id = params[:line_user_id]
+    if session[:line_user_id].present? && session[:line_user_id] == line_user_id # セッションにLINEユーザーIDが存在するか確認
+      line_user = LineUser.new(user_id: current_user.id, line_user_id: line_user_id) # user_idとline_user_idを指定してLineUserインスタンスを生成
+      if line_user.save
+        Rails.logger.debug "LINE user linked: #{line_user_id}" # デバッグ用
+        redirect_to home_path, notice: 'LINEとの連携が完了しました'
+        session[:line_user_id] = nil
+      else
+        Rails.logger.debug "Failed to create LINE user" # デバッグ用
+        redirect_to home_path, alert: 'LINEとの連携に失敗しました'
+      end
+    elsif current_user.line_user.present?
+      Rails.logger.debug "LINE user already exists" # デバッグ用
+      redirect_to home_path, alert: '既にLINEとの連携が完了しています'
     else
-      puts "No current user found" # デバッグ用ログ
-      message = {
-        type: 'text',
-        text: 'ユーザーを特定できませんでした。再度お試しください。'
-      }
-      client.reply_message(event['replyToken'], message)
+      Rails.logger.debug "No LINE user ID in session" # デバッグ用
+      redirect_to home_path, alert: 'LINEとの連携に失敗しました'
     end
-  end
-
-  def handle_message(event)
-    line_user_id = event['source']['userId']
-    puts "Received LINE user ID from message: #{line_user_id}" # デバッグ用ログ
-
-    user = current_user # ログインしているユーザーを取得
-    if user && user.line_user.nil? # ログインしているユーザーが存在し、LINEユーザーが関連付けられていない場合
-      puts "Current user ID: #{user.id}" # デバッグ用ログ
-      user.create_line_user(line_user_id: line_user_id) # 新しいレコードを作成し、ユーザーとLINEユーザーを関連付ける
-      puts "LINE user created for user ID: #{user.id}" # デバッグ用ログ
-    else
-      puts "No current user found or LINE user already exists" # デバッグ用ログ
-    end
-
-    case event.type
-    when Line::Bot::Event::MessageType::Text
-      message = {
-        type: 'text',
-        text: event.message['text']
-      }
-      client.reply_message(event['replyToken'], message)
-    end
-  end
-
-  def client
-    @client ||= Line::Bot::Client.new { |config|
-      config.channel_id = ENV['LINE_CHANNEL_ID']
-      config.channel_secret = ENV['LINE_CHANNEL_SECRET']
-      config.channel_token = ENV['LINE_CHANNEL_TOKEN']
-    }
   end
 end

@@ -15,10 +15,11 @@ class LineNotifyService
       text: message
     }
     response = @client.push_message(line_user_id, message_payload)
+
     if response.code != 200
-      puts "Error: #{response.read_body}"
+      error_message = JSON.parse(response.read_body)['message']
     else
-      puts "Message sent successfully to #{line_user_id}: #{message}"
+      Rails.logger.info "Message sent successfully to #{line_user_id}: #{message}"
     end
   end
 
