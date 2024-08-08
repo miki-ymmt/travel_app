@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
   get 'chatbots/ask' => 'chatbots#ask'
   post 'chatbots/answer' => 'chatbots#answer'
-  post '/callback', to: 'linebot#callback'
+  post '/callback', to: 'line_bot#callback'
+  post '/line_user' => 'line_bot#create'
   #resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,7 +1,7 @@
 require 'line/bot'
 
 class LineNotifyService
-  def initialize #LINEクライアントを初期化
+  def initialize
     @client = Line::Bot::Client.new do |config|
       config.channel_id = ENV['LINE_CHANNEL_ID']
       config.channel_secret = ENV['LINE_CHANNEL_SECRET']
@@ -9,23 +9,35 @@ class LineNotifyService
     end
   end
 
-  def notify(line_user_id, message) #LINEユーザーにメッセージを送信
-    message = {
-        type: 'text',
-        text: message
+  def notify(line_user_id, message)
+    message_payload = {
+      type: 'text',
+      text: message
     }
-    response = @client.push_message(line_user_id, message)
-    puts response.read_body if response.code != 200 #エラーが発生した場合はエラーメッセージを出力
+    response = @client.push_message(line_user_id, message_payload)
+
+    if response.code != 200
+      error_message = JSON.parse(response.read_body)['message']
+    else
+      Rails.logger.info "Message sent successfully to #{line_user_id}: #{message}"
+    end
   end
 
-  def send_travel_notifications #旅行の出発日に応じてLINEユーザーに通知を送信
+  def send_travel_notifications
+    puts "Executing send_travel_notifications method"
     trips = Trip.where(departure_date: [7.days.from_now.to_date, 3.days.from_now.to_date, 1.day.from_now.to_date])
+    puts "Trips found: #{trips.size}"
+
     trips.each do |trip|
       user = trip.user
-      next unless user.line_user
+      puts "Processing trip for user: #{user.id}"
+      if user.line_user
+        puts "User has LINE user: #{user.line_user.line_user_id}"
 
-      days_left = (trip.departure_date - Date.today).to_i
-      message = case days_left
+        days_left = (trip.departure_date - Date.today).to_i
+        puts "Days left for trip: #{days_left}"
+
+        message = case days_left
                 when 7
                   "#{user.name}さん、旅の出発まであと一週間です！準備はいかがですか？パスポートやビザの有効期限を確認しましたか？また、旅行先の天気を確認して、適切な服装を準備しましょう。現地の文化やマナーについても調べておくと安心ですよ✨"
                 when 3
@@ -36,7 +48,15 @@ class LineNotifyService
                   nil
                 end
 
-      notify(user.line_user.line_user_id, message) if message
+        if message
+          puts "Sending message to #{user.line_user.line_user_id}: #{message}"
+          notify(user.line_user.line_user_id, message)
+        else
+          puts "No message to send for #{user.name} with days_left: #{days_left}"
+        end
+      else
+        puts "No LINE user ID found for user: #{user.id}"
+      end
     end
   end
 end

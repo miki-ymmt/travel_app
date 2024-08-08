@@ -50,15 +50,31 @@
     <%= image_tag "home.png", class: "w-full sm:w-1/2 mx-auto mb-8 mt-8" %>
     <%= link_to "旅を登録する", new_trip_path, class: "bg-yellow-300 hover:bg-yellow-500 btn btn-primary mt-4 px-6 py-3 rounded shadow-lg hover:shadow-sm hover:translate-y-0.5 transform transition" %>
 
-    <div class="mt-6 text-center">
-      <p>友だち追加をすると出発予定日の1週間前からメッセージが届きます！</p>
-    </div>
+    <div class="card glass w-full mt-6">
+      <div class="mt-6 text-center">
+        <p>友だち追加をすると<br>
+        出発予定日の1週間前から<br>
+        メッセージが届きます！</p>
+      </div>
 
-    <div class="flex justify-center mt-8">
-      <div class="w-full flex justify-center">
-        <a href="https://lin.ee/t427Y3k" class="w-32">
-          <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" class="w-full h-auto">
-        </a>
+      <div class="flex justify-center mt-8">
+        <div class="w-full flex justify-center">
+          <%= link_to "https://lin.ee/t427Y3k", class: "w-32" do %>
+            <%= image_tag("https://scdn.line-apps.com/n/line_add_friends/btn/ja.png", alt: "友だち追加", class: "w-full h-auto", target: :_blank) %>
+          <% end %>
+        </div>
+      </div>
+      <!-- LINE連携手順の説明 -->
+      <div class="mt-6 text-center">
+        <p>友だち追加が完了したら<br>
+            完了ボタンを押してくださいね</p>
+      </div>
+
+      <div class="flex justify-center mt-8">
+        <%= form_with url: line_user_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :line_user_id, value: session[:line_user_id] %>
+          <%= f.submit '完了', class: "bg-yellow-300 hover:bg-yellow-500 btn btn-primary mb-4 px-6 py-3 rounded shadow-lg hover:shadow-sm hover:translate-y-0.5 transform transition" %>
+        <% end %>
       </div>
     </div>
   </div>
