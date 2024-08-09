@@ -23,15 +23,16 @@ class LineAuthController < ApplicationController
     redirect_uri = line_auth_callback_url
     state = SecureRandom.hex(10) #CSRF対策のためのstateパラメータ
     scope = "profile openid" #プロフィール情報を取得するためのスコープ
+    bot_prompt = "aggressive" #LINEログイン画面でのユーザーへのプロンプト表示
 
-    "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=#{client_id}&redirect_uri=#{redirect_uri}&state=#{state}&scope=#{scope}"
+    "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=#{client_id}&redirect_uri=#{redirect_uri}&state=#{state}&scope=#{scope}&bot_prompt=#{bot_prompt}"
   end
 
 
   def get_line_token(code) #認証コードを使ってアクセストークンを取得
     client_id = ENV['LINE_LOGIN_CHANNEL_ID']
     client_secret = ENV['LINE_LOGIN_CHANNEL_SECRET']
-    redirect_uri = callback_line_auth_url
+    redirect_uri = line_auth_callback_url
 
     response = RestClient.post("https://api.line.me/oauth2/v2.1/token", {
       "grant_type" => "authorization_code",
