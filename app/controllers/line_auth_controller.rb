@@ -7,8 +7,15 @@ class LineAuthController < ApplicationController
     response = get_line_token(params[:code]) #LINEログイン成功後にLINEから返されるコードを取得
     line_user_id = get_line_user_id(response) #LINEユーザーIDを取得
 
+    # 既存のLineUserがない場合は、新しいLineUserを作成
+    if current_user.line_user.nil?
+      current_user.create_line_user(line_user_id: line_user_id) #現在のユーザーにLINEアカウントを連携
+    else
+      #既存のLineUserがある場合は、LINEユーザーIDを更新
+      current_user.line_user.update(line_user_id: line_user_id)
+    end
 
-    if current_user.update(line_user_id: line_user_id) #現在のユーザーにLINEアカウントを連携
+    if current_user.save
       redirect_to home_path, notice: "LINEアカウントを連携しました。"
     else
       redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
