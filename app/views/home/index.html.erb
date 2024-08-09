@@ -52,23 +52,11 @@
 
     <div class="card glass w-full mt-6">
       <div class="mt-6 text-center">
-        <p>友だち追加をすると<br>
+        <p>LINEと連携すると<br>
         出発予定日の1週間前から<br>
         メッセージが届きます！</p>
-      </div>
-
-      <div class="flex justify-center mt-8">
-        <div class="w-full flex justify-center">
-          <%= link_to "https://lin.ee/t427Y3k", class: "w-32" do %>
-            <%= image_tag("https://scdn.line-apps.com/n/line_add_friends/btn/ja.png", alt: "友だち追加", class: "w-full h-auto", target: :_blank) %>
-          <% end %>
-        </div>
-      </div>
-      <!-- LINE連携手順の説明 -->
-      <div class="mt-6 text-center">
-        <p>LINEアカウントと連携する</p>
         <%= link_to line_link_path, method: :get do %>
-          <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4" %>
+          <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4 mb-4" %>
         <% end %>
       </div>
     </div>
