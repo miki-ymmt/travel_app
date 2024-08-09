@@ -66,8 +66,10 @@
       </div>
       <!-- LINE連携手順の説明 -->
       <div class="mt-6 text-center">
-        <%= button_to "LINEアカウントと連携する", line_link_path, method: :get %>
-        <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4" %>
+        <p>LINEアカウントと連携する</p>
+        <%= link_to line_link_path, method: :get do %>
+          <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4" %>
+        <% end %>
       </div>
     </div>
   </div>

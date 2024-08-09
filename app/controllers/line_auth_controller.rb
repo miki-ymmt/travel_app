@@ -1,6 +1,6 @@
 class LineAuthController < ApplicationController
   def link
-    redirect_to line_login_url
+    redirect_to line_login_url, allow_other_host: true #LINE認証ページにリダイレクト
   end
 
   def callback #LINEから返されるコードを取得し、ユーザーのLINEアカウントを連携
@@ -20,7 +20,7 @@ class LineAuthController < ApplicationController
 
   def line_login_url #LINE認証ページのURLを生成
     client_id = ENV['LINE_LOGIN_CHANNEL_ID']
-    redirect_uri = callback_line_auth_url
+    redirect_uri = line_auth_callback_url
     state = SecureRandom.hex(10) #CSRF対策のためのstateパラメータ
     scope = "profile openid" #プロフィール情報を取得するためのスコープ
 
