@@ -34,12 +34,15 @@ class LineAuthController < ApplicationController
     client_secret = ENV['LINE_LOGIN_CHANNEL_SECRET']
     redirect_uri = line_auth_callback_url
 
-    response = RestClient.post("https://api.line.me/oauth2/v2.1/token", {
-      "grant_type" => "authorization_code",
-      "code" => code,
-      "redirect_uri" => redirect_uri,
-      "client_id" => client_id,
-      "client_secret" => client_secret
+    response = HTTParty.post("https://api.line.me/oauth2/v2.1/token", {
+      body: {
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: redirect_uri,
+        client_id: client_id,
+        client_secret: client_secret
+      },
+      headers: { 'Content-Type' => 'application/x-www-form-urlencoded' }
     })
 
     JSON.parse(response.body) #APIからのレスポンスをJSON形式に変換
