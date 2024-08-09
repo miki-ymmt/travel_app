@@ -13,41 +13,55 @@ class LineBotController < ApplicationController
   def callback
     body = request.body.read
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    unless client.validate_signature(body, signature)
-      head :bad_request
-    end
+    return head :bad_request unless client.validate_signature(body, signature)
 
-    events = client.parse_events_from(body)
-    events.each do |event|
-      if event.is_a?(Line::Bot::Event::Follow) || event.is_a?(Line::Bot::Event::Message)
+    client.parse_events_from(body).each do |event|
+      if event.is_a?(Line::Bot::Event::Follow)
         line_user_id = event['source']['userId']
-        Rails.logger.debug "Received LINE user ID: #{line_user_id}" # デバッグ用
-        session[:line_user_id] = line_user_id
-        Rails.logger.debug "Stored LINE user ID in session: #{session[:line_user_id]}" # デバッグ用
+        Rails.logger.debug "Received LINE user ID: #{line_user_id}"
+
+        user = current_user
+
+        if user.update(line_user_id: line_user_id)
+          send_success_message(event["replyToken"])
+        else
+          send_failure_message(event["replyToken"])
+        end
       end
     end
     head :ok
   end
 
+
   def create
-    Rails.logger.debug "Session LINE user ID at the beginning of create action: #{session[:line_user_id]}" # デバッグ用
     line_user_id = params[:line_user_id]
-    if session[:line_user_id].present? && session[:line_user_id] == line_user_id # セッションにLINEユーザーIDが存在するか確認
-      line_user = LineUser.new(user_id: current_user.id, line_user_id: line_user_id) # user_idとline_user_idを指定してLineUserインスタンスを生成
-      if line_user.save
-        Rails.logger.debug "LINE user linked: #{line_user_id}" # デバッグ用
-        redirect_to home_path, notice: 'LINEとの連携が完了しました'
-        session[:line_user_id] = nil
-      else
-        Rails.logger.debug "Failed to create LINE user" # デバッグ用
-        redirect_to home_path, alert: 'LINEとの連携に失敗しました'
-      end
-    elsif current_user.line_user.present?
-      Rails.logger.debug "LINE user already exists" # デバッグ用
-      redirect_to home_path, alert: '既にLINEとの連携が完了しています'
+
+    line_user = LineUser.find_by(line_user_id: line_user_id, user_id: nil) # user_idがnilでline_user_idが一致するレコードを取得
+
+    if line_user.nil?
+      Rails.logger.debug "No unlinked LINE user or LINE user already linked" # デバッグ用
+      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
+      return
+    end
+
+    # ログインしているユーザーにLINEユーザーを紐付け
+    line_user.user_id = current_user.id
+
+    if line_user.save
+      Rails.logger.debug "LINE user linked successfully: #{line_user.line_user_id}" # デバッグ用
+      redirect_to home_path, notice: "LINEアカウントを連携しました。"
     else
-      Rails.logger.debug "No LINE user ID in session" # デバッグ用
-      redirect_to home_path, alert: 'LINEとの連携に失敗しました'
+      Rails.logger.error "Failed to link LINE user with current user: #{line_user.line_user_id}" # エラーログ
+      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
+    end
+  end
+
+  def complete
+    @line_user = current_user.line_user
+    if @line_user.nil?
+      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました"
+    else
+      @line_user_id = @line_user.line_user_id
     end
   end
 end

@@ -66,15 +66,8 @@
       </div>
       <!-- LINE連携手順の説明 -->
       <div class="mt-6 text-center">
-        <p>友だち追加が完了したら<br>
-            完了ボタンを押してくださいね</p>
-      </div>
-
-      <div class="flex justify-center mt-8">
-        <%= form_with url: line_user_path, method: :post, local: true do |f| %>
-          <%= f.hidden_field :line_user_id, value: session[:line_user_id] %>
-          <%= f.submit '完了', class: "bg-yellow-300 hover:bg-yellow-500 btn btn-primary mb-4 px-6 py-3 rounded shadow-lg hover:shadow-sm hover:translate-y-0.5 transform transition" %>
-        <% end %>
+        <%= button_to "LINEアカウントと連携する", line_link_path, method: :get %>
+        <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4" %>
       </div>
     </div>
   </div>

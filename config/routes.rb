@@ -20,7 +20,9 @@ Rails.application.routes.draw do
   get 'chatbots/ask' => 'chatbots#ask'
   post 'chatbots/answer' => 'chatbots#answer'
   post '/callback', to: 'line_bot#callback'
-  post '/line_user' => 'line_bot#create'
+  post '/line_users' => 'line_bot#create'
+  get 'line_link' => 'line_auth#link'
+  get 'line_auth/callback' => 'line_auth#callback'
   #resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
