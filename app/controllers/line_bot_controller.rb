@@ -19,49 +19,8 @@ class LineBotController < ApplicationController
       if event.is_a?(Line::Bot::Event::Follow)
         line_user_id = event['source']['userId']
         Rails.logger.debug "Received LINE user ID: #{line_user_id}"
-
-        user = current_user
-
-        if user.update(line_user_id: line_user_id)
-          send_success_message(event["replyToken"])
-        else
-          send_failure_message(event["replyToken"])
-        end
       end
     end
     head :ok
-  end
-
-
-  def create
-    line_user_id = params[:line_user_id]
-
-    line_user = LineUser.find_by(line_user_id: line_user_id, user_id: nil) # user_idがnilでline_user_idが一致するレコードを取得
-
-    if line_user.nil?
-      Rails.logger.debug "No unlinked LINE user or LINE user already linked" # デバッグ用
-      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
-      return
-    end
-
-    # ログインしているユーザーにLINEユーザーを紐付け
-    line_user.user_id = current_user.id
-
-    if line_user.save
-      Rails.logger.debug "LINE user linked successfully: #{line_user.line_user_id}" # デバッグ用
-      redirect_to home_path, notice: "LINEアカウントを連携しました。"
-    else
-      Rails.logger.error "Failed to link LINE user with current user: #{line_user.line_user_id}" # エラーログ
-      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
-    end
-  end
-
-  def complete
-    @line_user = current_user.line_user
-    if @line_user.nil?
-      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました"
-    else
-      @line_user_id = @line_user.line_user_id
-    end
   end
 end

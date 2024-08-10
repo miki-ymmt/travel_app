@@ -6,19 +6,24 @@ class LineAuthController < ApplicationController
   def callback #LINEから返されるコードを取得し、ユーザーのLINEアカウントを連携
     response = get_line_token(params[:code]) #LINEログイン成功後にLINEから返されるコードを取得
     line_user_id = get_line_user_id(response) #LINEユーザーIDを取得
+    Rails.logger.debug "Retrieved LINE user ID: #{line_user_id}"
 
     # 既存のLineUserがない場合は、新しいLineUserを作成
     if current_user.line_user.nil?
       current_user.create_line_user(line_user_id: line_user_id) #現在のユーザーにLINEアカウントを連携
+      Rails.logger.debug "Created new LineUser record"
     else
       #既存のLineUserがある場合は、LINEユーザーIDを更新
       current_user.line_user.update(line_user_id: line_user_id)
+        Rails.logger.debug "Updated existing LineUser record"
     end
 
     if current_user.save
-      redirect_to home_path, notice: "LINEアカウントを連携しました。"
+      Rails.logger.debug "Successfully linked LINE account"
+      redirect_to home_path, notice: "LINEアカウントを連携しました"
     else
-      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました。"
+      Rails.logger.error "Failed to link LINE account"
+      redirect_to home_path, alert: "LINEアカウントの連携に失敗しました"
     end
   end
 
