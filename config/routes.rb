@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   get 'chatbots/ask' => 'chatbots#ask'
   post 'chatbots/answer' => 'chatbots#answer'
   post '/callback', to: 'line_bot#callback'
-  post '/line_users' => 'line_bot#create'
   get 'line_link' => 'line_auth#link'
   get 'line_auth/callback' => 'line_auth#callback'
   #resources :tasks
