@@ -1,0 +1,26 @@
+
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <div class="w-full max-w-md">
+    <h1 class="text-3xl font-bold mb-4 mt-6 text-center">パスワード再設定</h1>
+    <table class="table">
+        <tr>
+          <th scope="row">メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+    </table>
+    <%= form_with model: @user, url: password_reset_path(@token), local: true do |form| %>
+      <%= render "shared/error_messages", object: form.object %>
+      <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto mt-6">
+        <%= form.label :password, "パスワード", class: "block text-lg font-medium text-gray-700" %>
+        <%= form.password_field :password, placeholder: "4文字以上8文字以下", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+      </div>
+      <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
+        <%= form.label :password_confirmation, "パスワード（確認）", class: "block text-lg font-medium text-gray-700" %>
+        <%= form.password_field :password_confirmation, placeholder: "パスワードをもう一度", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+      </div>
+        <div class="mb-8 flex justify-center w-3/5 sm:w-4/5 md:w-full mx-auto">
+          <%= form.submit "更新", class: "btn btn-secondary rounded mt-8 shadow-lg w-full" %>
+        </div>
+    <% end %>
+  <div>
+</div>
