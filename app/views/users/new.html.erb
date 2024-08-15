@@ -1,26 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="flex flex-col justify-center items-center min-h-screen">
-      <h1 class="text-3xl font-bold mb-4 mt-6">ユーザー登録</h1>
+
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <div class="w-full max-w-md">
+    <h1 class="text-3xl font-bold mb-6 mt-16 text-center">ユーザー登録</h1>
       <%= form_with model: @user, local: true do |form| %>
-        <%= render 'shared/error_messages', object: form.object %>
-        <div class="mb-8 w-80">
+      <%= render 'shared/error_messages', object: form.object %>
+        <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
           <%= form.label :name, "名前", class: "block text-lg font-medium text-gray-700"  %>
-          <%= form.text_field :name, placeholder: "10文字以下", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+          <%= form.text_field :name, placeholder: "10文字以下", class: "w-3/5 sm:w-4/5 md:w-full mx-auto mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
         </div>
-        <div class="mb-8 w-80">
+        <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
           <%= form.label :email, "メールアドレス", class: "block text-lg font-medium text-gray-700" %>
-          <%= form.email_field :email, class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+          <%= form.email_field :email, placeholder: "メールアドレスを入力", class: "w-3/5 sm:w-4/5 md:w-full mx-auto mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
         </div>
-        <div class="mb-8 w-80">
+        <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
           <%= form.label :password, "パスワード", class: "block text-lg font-medium text-gray-700" %>
-          <%= form.password_field :password, placeholder: "4文字以上8文字以下", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+          <%= form.password_field :password, placeholder: "4文字以上8文字以下", class: "w-3/5 sm:w-4/5 md:w-full mx-auto mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
         </div>
-        <div class="mb-8 w-80">
+        <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
           <%= form.label :password_confirmation, "パスワード（確認）", class: "block text-lg font-medium text-gray-700" %>
-          <%= form.password_field :password_confirmation, placeholder: "パスワードをもう一度", class: "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+          <%= form.password_field :password_confirmation, placeholder: "パスワードをもう一度", class: "w-3/5 sm:w-4/5 md:w-full mx-auto mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
         </div>
-        <div class="mb-8 flex justify-center w-80">
+        <div class="mb-8 flex justify-center w-3/5 sm:w-4/5 md:w-full mx-auto">
           <%= form.submit "登録", class: "btn btn-secondary rounded mt-4 w-full" %>
         </div>
       <% end %>
@@ -30,11 +30,10 @@
       <div>
       <!-- Google ログイン -->
       <%= link_to auth_at_provider_path(provider: :google), data: { turbo: false } do %>
-      <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-3/5 mx-auto py-5" %>
+        <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-2/5 mx-auto py-5" %>
       <% end %>
-      <div class="text-center text-sm">
-      <%= link_to "ログインはこちら", login_path, class: "hover:bg-blue-200 opacity-75 rounded-lg px-4 py-2" %>
-      </div
-    </div>
+      <div class="text-center text-sm mb-4">
+        <%= link_to "ログインはこちら", login_path, class: "hover:bg-blue-200 opacity-75 rounded-lg px-4 py-2" %>
+      </div>
   </div>
 </div>

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   post '/callback', to: 'line_bot#callback'
   get 'line_link' => 'line_auth#link'
   get 'line_auth/callback' => 'line_auth#callback'
+  resources :password_resets, only: %i[new create edit update]
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   #resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

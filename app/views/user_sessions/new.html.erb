@@ -1,25 +1,27 @@
-<div class="container">
-  <div class="row">
-    <div class="flex flex-col justify-center items-center min-h-screen">
-      <h1 class="text-3xl font-bold mb-6">ログイン</h1>
-      <%= form_with url: login_path, local: true do |form| %>
-        <div class="mb-8">
-          <%= form.email_field :email, placeholder: "メールアドレスを入力", class: "mt-1 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2 placeholder:メールアドレスを入力" %>
-        </div>
-        <div class="mb-8 w-80">
-          <%= form.password_field :password, placeholder: "パスワードを入力", class: "mt-1  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
-        </div>
-        <div class="mb-8 flex justify-center w-80">
-          <%= form.submit "ログイン", class: "btn btn-secondary rounded mt-8 shadow-lg w-full" %>
-        </div>
-      <% end %>
-      <div class="text-center text-sm">
-      または
-      <div>
-      <!-- Googleログインボタンの表示 -->
-      <%= link_to auth_at_provider_path(provider: :google), data: { turbo: false } do %>
-        <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-3/5 mx-auto py-5" %>
-      <% end %>
+
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <h1 class="text-3xl font-bold mb-6">ログイン</h1>
+  <div class="w-full max-w-md">
+    <%= form_with url: login_path, local: true do |form| %>
+      <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
+        <%= form.email_field :email, placeholder: "メールアドレスを入力", class: "mt-1 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2 placeholder:メールアドレスを入力" %>
+      </div>
+      <div class="mb-8 w-3/5 sm:w-4/5 md:w-full mx-auto">
+        <%= form.password_field :password, placeholder: "パスワードを入力", class: "mt-1  focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-12 p-2" %>
+      </div>
+      <div class="mb-8 flex justify-center w-full mx-auto">
+        <%= form.submit "ログイン", class: "btn btn-secondary rounded mt-8 shadow-lg w-3/5 sm:w-4/5 md:w-full mx-auto" %>
+      </div>
+    <% end %>
+    <div class="text-center text-sm">
+    または
+    <div>
+    <!-- Googleログインボタンの表示 -->
+    <%= link_to auth_at_provider_path(provider: :google), data: { turbo: false } do %>
+      <%= image_tag "google_sign_in.png", class: "w-1/2 md:w-3/5 mx-auto py-5" %>
+    <% end %>
+    <div class="text-center text-sm">
+      <%= link_to "パスワードをお忘れの方はこちら", new_password_reset_path, class: "hover:bg-blue-200 opacity-75 rounded-lg px-4 py-2" %>
     </div>
   </div>
 </div>

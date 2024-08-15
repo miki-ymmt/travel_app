@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   validates :email, uniqueness: true, presence: true
+  validates :reset_password_token, uniqueness: true, allow_nil: true
 
   # 未来の旅行を取得
   def next_trip

@@ -70,7 +70,19 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "myapp_production"
-
+  config.action_mailer.raise_delivery_errors = true  #メール送信に失敗した場合にエラーを発生させる
+  config.action_mailer.delivery_method = :smtp  #メールの送信方法をSMTP（Simple Mail Transfer Protocol）に設定
+  # SMTPサーバーの設定
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "travel-starter.onrender.com",
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: "plain",
+    enable_starttls_auto: true
+  }
+  config.action_mailer.default_url_options = { host: 'travel-starter.onrender.com', protocol: 'https' }  #メール内に記載されるURLにホスト名を設定
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
