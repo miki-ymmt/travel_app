@@ -70,6 +70,9 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "myapp_production"
+  config.action_mailer.logger = Logger.new(STDOUT)
+  config.action_mailer.logger.level = Logger::DEBUG
+
   config.action_mailer.raise_delivery_errors = true  #メール送信に失敗した場合にエラーを発生させる
   config.action_mailer.delivery_method = :smtp  #メールの送信方法をSMTP（Simple Mail Transfer Protocol）に設定
   # SMTPサーバーの設定
