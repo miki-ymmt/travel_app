@@ -119,6 +119,9 @@ GEM
       reline (>= 0.3.8)
     deep_merge (1.2.2)
     dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     event_stream_parser (1.0.0)
@@ -373,7 +376,7 @@ DEPENDENCIES
   config
   cssbundling-rails
   debug
-  dotenv
+  dotenv-rails
   fog-aws
   httparty (~> 0.22.0)
   jbuilder
