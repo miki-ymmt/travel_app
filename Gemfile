@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 
 gem 'sorcery'
 gem 'carrierwave', '~> 3.0'
-gem 'dotenv', groups: [:development, :test]
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'fog-aws'
 gem 'config'
 gem 'rails-i18n', '~> 7.0.0'
