@@ -15,6 +15,8 @@
         <li><%= link_to "FLIGHT", flights_path %></li>
         <li><%= link_to "AI CHATBOT", chatbots_ask_path %></li>
         <li><%= link_to "ホーム", home_path %></li>
+        <li><%= link_to "マイページ", user_path(current_user) %></li>
+        <li><%= link_to "アカウント削除", user_path(current_user), data: { turbo_method: "delete", turbo_confirm: '本当に退会しますか？'} %></li>
         <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
       </ul>
     </details>

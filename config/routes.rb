@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#top'
-  resources :users
+  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :trips do
     member do
       post 'add_todo'
