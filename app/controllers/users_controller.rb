@@ -18,17 +18,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+  end
+
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       redirect_to @user, notice: 'アカウント情報が更新されました。'
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    reset_session
+    redirect_to root_path, status: :see_other, notice: 'アカウントを削除しました。'
   end
 
   private
