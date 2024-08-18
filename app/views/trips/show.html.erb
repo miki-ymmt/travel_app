@@ -1,13 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div class="flex flex-col justify-center items-center min-h-screen">
-      <h1 class="text-3xl font-bold mb-6">旅の詳細</h1>
-      <div class="card bg-blue-50 w-96 shadow-xl">
-        <figure class="px-10 pt-10">
-          <div class="card-body items-center text-center">
-            <p class="text-lg font-bold mb-4">行き先: <%= @trip.destination %></p>
-            <p class="text-gray-700 mb-2">出発日: <%= @trip.departure_date %></p>
-            <p class="text-gray-700 mb-4">帰国日: <%= @trip.return_date %></p>
+
+<div class="flex flex-col justify-center items-center min-h-screen">
+  <h1 class="text-3xl font-bold mb-6">旅の詳細</h1>
+  <div class="card bg-blue-50 w-96 shadow-xl">
+    <figure class="px-10 pt-10">
+      <div class="card-body items-center text-center">
+        <p class="text-lg font-bold mb-4"><%= @trip.destination %></p>
+        <p class="text-gray-700 mb-2">出発日: <%= @trip.departure_date %></p>
+        <p class="text-gray-700 mb-4">帰国日: <%= @trip.return_date %></p>
 
             <!-- モーダル -->
             <button class="btn mb-4 bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" onclick="document.getElementById('my_modal_4').showModal()">TO DOを見る</button>
@@ -29,7 +28,7 @@
         <turbo-frame id="todo-form" >
           <%= render partial: "trips/todo_form", locals: { todo: @new_todo } %>
         </turbo-frame>
-       </div>
+        </div>
     </dialog>
 
             <div class="card-actions flex justify-end absolute top-4 right-4 space-x-6">
@@ -43,7 +42,5 @@
           </div>
         </figure>
         <%= link_to "一覧に戻る", trips_path, class: "btn btn-primary rounded shadow-lg" %>
-      </div>
-    </div>
   </div>
 </div>
