@@ -1,15 +1,29 @@
 
 <div class="flex flex-col justify-center items-center min-h-screen">
   <h1 class="text-3xl font-bold mb-6">旅の詳細</h1>
-  <div class="card bg-blue-50 w-96 shadow-xl">
-    <figure class="px-10 pt-10">
-      <div class="card-body items-center text-center">
+  <div class="card bg-blue-50 w-96 shadow-xl rounded-lg p-4">
+    <div class="relative">
+      <%= image_tag image_url_for_trip(@trip), class: "w-full h-60 object-cover rounded-lg border border-white shadow-lg" %>
+    </div>
+    <div class="bg-white p-4 rounded-b-lg mt-4 text-center">
+      <div class"text-center">
         <p class="text-lg font-bold mb-4"><%= @trip.destination %></p>
         <p class="text-gray-700 mb-2">出発日: <%= @trip.departure_date %></p>
         <p class="text-gray-700 mb-4">帰国日: <%= @trip.return_date %></p>
+      </div>
+
+        <!-- 編集・削除ボタン -->
+        <div class="card-actions flex justify-end space-x-4">
+          <%= link_to edit_trip_path(@trip) do %>
+            <i class="fas fa-edit fa-lg"></i>
+          <% end %>
+          <%= link_to trip_path(@trip), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" } do %>
+            <i class="fas fa-trash fa-lg"></i>
+          <% end %>
+        </div>
 
             <!-- モーダル -->
-            <button class="btn mb-4 bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" onclick="document.getElementById('my_modal_4').showModal()">TO DOを見る</button>
+            <button class="btn btn bg-purple-300 hover:bg-purple-500 btn btn primary px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-6" onclick="document.getElementById('my_modal_4').showModal()">TO DO</button>
     <dialog id="my_modal_4" class="modal">
         <div class="modal-box">
             <form method="dialog">
@@ -30,17 +44,5 @@
         </turbo-frame>
         </div>
     </dialog>
-
-            <div class="card-actions flex justify-end absolute top-4 right-4 space-x-6">
-              <%= link_to edit_trip_path(@trip) do %>
-                <i class="fas fa-edit fa-lg"></i>
-              <% end %>
-              <%= link_to trip_path(@trip), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" } do %>
-                <i class="fas fa-trash fa-lg"></i>
-              <% end %>
-            </div>
-          </div>
-        </figure>
-        <%= link_to "一覧に戻る", trips_path, class: "btn btn-primary rounded shadow-lg" %>
   </div>
 </div>
