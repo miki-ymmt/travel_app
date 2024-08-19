@@ -31,6 +31,14 @@ module TripHelper
       asset_path("rome.png")
     when "台北"
       asset_path("taipei.png")
+    when "ホーチミン"
+      asset_path("ho_chi_minh.png")
+    when "香港"
+      asset_path("hong_kong.png")
+    when "アムステルダム"
+      asset_path("amsterdam.png")
+    when "ブリュッセル"
+      asset_path("brussels.png")
     end
   end
 end

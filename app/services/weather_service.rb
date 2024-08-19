@@ -22,7 +22,11 @@ class WeatherService
     "マドリード" => "Madrid",
     "ミュンヘン" => "Munich",
     "ローマ" => "Rome",
-    "上海" => "Shanghai"
+    "上海" => "Shanghai",
+    "香港" => "Hong Kong",
+    "ホーチミン" => "Ho Chi Minh",
+    "アムステルダム" => "Amsterdam",
+    "ブリュッセル" => "Brussels"
     }
 
 
