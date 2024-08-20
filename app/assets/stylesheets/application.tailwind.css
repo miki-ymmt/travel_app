@@ -22,3 +22,9 @@
     background-size: cover;
     background-position: center;
 }
+
+.card-background {
+    background-image: url('background_sky.png');
+    background-size: cover;
+    background-position: center;
+}
