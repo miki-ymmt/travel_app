@@ -22,23 +22,31 @@
   <!-- メインコンテンツ -->
   <div class="w-3/4 ml-4 p-6 rounded text-center">
     <% if @next_trip %>
-      <% if @weather_info %>
-        <div class="card bg-base-100 shadow-xl mb-8 w-full max-w-xl mx-auto">
-          <div class="card-body">
-            <div class="flex items-center justify-between mb-3">
-              <div class="text-md sm:text-lg font-semibold"><%= @next_trip.destination %>の天気</div>
-              <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:temperature] %> °C</div>
-            </div>
-            <div class="mt-2 text-center">
-              <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:description] %></div>
-            </div>
-            <div class"mt-4 flex justify-center">
-              <%= button_to "最新の天気を見る", home_path, method: :get, class: "btn btn-outline btn-info btn-sm rounded mt-4 hover:shadow-sm hover:translate-y-0.5 transform transition" %>
+      <% unless @next_trip.destination == "その他の国" %>
+        <% if @weather_info %>
+          <div class="card bg-base-100 shadow-xl mb-8 w-full max-w-xl mx-auto">
+            <div class="card-body">
+              <% if @weather_info['error'] %>
+                <p class="text-red-500"><%= @weather_info['error'] %></p>
+              <% else %>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="text-md sm:text-lg font-semibold"><%= @next_trip.destination %>の天気</div>
+                  <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:temperature] %> °C</div>
+                </div>
+                <div class="mt-2 text-center">
+                  <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:description] %></div>
+                </div>
+              <% end %>
+              <div class="mt-4 flex justify-center">
+                <%= button_to "最新の天気を見る", home_path, method: :get, class: "btn btn-outline btn-info btn-sm rounded mt-4 hover:shadow-sm hover:translate-y-0.5 transform transition" %>
+              </div>
             </div>
           </div>
-        </div>
+        <% else %>
+          <p>天気情報を取得できませんでした。</p>
+        <% end %>
       <% else %>
-        <p>天気情報を取得できませんでした。</p>
+        <p>次の旅先は天気情報取得エリア対象外です。</p>
       <% end %>
     <% else %>
       <p>次の旅行が登録されていません。</p>

@@ -39,6 +39,8 @@ module TripHelper
       asset_path("amsterdam.png")
     when "ブリュッセル"
       asset_path("brussels.png")
+    when "その他の国"
+      asset_path("other.png")
     end
   end
 end
