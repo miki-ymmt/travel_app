@@ -6,10 +6,10 @@
         <h2 class="card-title mt-4"><%= current_user.name %></h2>
         <p class="text-sm">メールアドレス: <%= current_user.email %></p>
         <div class="card-actions justify-center">
-          <%= link_to "編集", edit_user_path(@user), class: "btn btn-accent rounded shadow-lg mt-6 w-80" %>
+          <%= link_to "編集", edit_user_path(@user), class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4 rounded shadow-lg mt-6 w-80" %>
         </div>
         <div class="card-actions justify-center">
-          <%= link_to "パスワード変更はこちら", new_password_reset_path, class: "btn btn-accent rounded shadow-lg mt-6 w-80" %>
+          <%= link_to "パスワード変更はこちら", new_password_reset_path, class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4 rounded shadow-lg mt-6 w-80" %>
         </div>
       </div>
     </div>
