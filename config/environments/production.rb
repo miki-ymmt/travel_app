@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -52,17 +54,17 @@ Rails.application.configure do
   config.force_ssl = true
 
   # Log to STDOUT by default
-  config.logger = ActiveSupport::Logger.new(STDOUT)
-    .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
-    .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+  config.logger = ActiveSupport::Logger.new($stdout)
+                                       .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+                                       .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
   # want to log everything, set the level to "debug".
-  config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
+  config.log_level = ENV.fetch('RAILS_LOG_LEVEL', 'info')
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -70,22 +72,22 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "myapp_production"
-  config.action_mailer.logger = Logger.new(STDOUT)
+  config.action_mailer.logger = Logger.new($stdout)
   config.action_mailer.logger.level = Logger::DEBUG
 
-  config.action_mailer.raise_delivery_errors = true  #メール送信に失敗した場合にエラーを発生させる
-  config.action_mailer.delivery_method = :smtp  #メールの送信方法をSMTP（Simple Mail Transfer Protocol）に設定
+  config.action_mailer.raise_delivery_errors = true # メール送信に失敗した場合にエラーを発生させる
+  config.action_mailer.delivery_method = :smtp # メールの送信方法をSMTP（Simple Mail Transfer Protocol）に設定
   # SMTPサーバーの設定
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: "travel-starter.onrender.com",
+    domain: 'travel-starter.onrender.com',
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
-    authentication: "plain",
+    authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: 'travel-starter.onrender.com', protocol: 'https' }  #メール内に記載されるURLにホスト名を設定
+  config.action_mailer.default_url_options = { host: 'travel-starter.onrender.com', protocol: 'https' } # メール内に記載されるURLにホスト名を設定
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

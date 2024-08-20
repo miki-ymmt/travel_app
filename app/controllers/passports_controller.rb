@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PassportsController < ApplicationController
   before_action :require_login, only: %i[new create update]
   before_action :set_passport, only: %i[new create update]
@@ -10,11 +12,11 @@ class PassportsController < ApplicationController
     @passport = Passport.find_or_initialize_by(user: current_user)
     if @passport.update(passport_params)
       respond_to do |format|
-        format.html { redirect_to @passport, notice: "パスポート写真を保存しました" }
+        format.html { redirect_to @passport, notice: 'パスポート写真を保存しました' }
         format.turbo_stream
       end
     else
-      flash.now[:alert] = "パスポート写真の保存に失敗しました"
+      flash.now[:alert] = 'パスポート写真の保存に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
@@ -22,15 +24,14 @@ class PassportsController < ApplicationController
   def update
     if @passport.update(passport_params)
       respond_to do |format|
-        format.html { redirect_to @passport, notice: "パスポート写真を更新しました" }
+        format.html { redirect_to @passport, notice: 'パスポート写真を更新しました' }
         format.turbo_stream
       end
     else
-      flash.now[:alert] = "パスポート写真の更新に失敗しました"
+      flash.now[:alert] = 'パスポート写真の更新に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def set_passport
     @passport = Passport.find_by(id: params[:id])

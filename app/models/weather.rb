@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Weather < ApplicationRecord
   belongs_to :trip
 
@@ -8,8 +10,7 @@ class Weather < ApplicationRecord
   validates :datetime, presence: true
   validates :fetched_at, presence: true
 
-
   def self.recent_for_trip(trip_id)
-    where(trip_id: trip_id).where('fetched_at >= ?', 1.minute.ago).order(fetched_at: :desc).first
+    where(trip_id:).where('fetched_at >= ?', 1.minute.ago).order(fetched_at: :desc).first
   end
 end
