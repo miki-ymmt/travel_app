@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Trip < ApplicationRecord
   belongs_to :user
   has_many :todos, dependent: :destroy
@@ -8,21 +10,21 @@ class Trip < ApplicationRecord
   validates :return_date, presence: true
 
   def update_weather_if_destination_changed
-    if destination_changed?
-      weathers.destroy_all
-      add_weather
-    end
+    return unless destination_changed?
+
+    weathers.destroy_all
+    add_weather
   end
 
   def add_weather
     weather_data = WeatherService.new.fetch_weather(destination)
-    if weather_data && weather_data["main"] && weather_data["weather"]
-      weathers.create(
-        temperature: weather_data["main"]["temp"],
-        description: weather_data["weather"][0]["description"],
-        datetime: Time.at(weather_data["dt"]),
-        fetched_at: Time.current
-      )
-    end
+    return unless weather_data && weather_data['main'] && weather_data['weather']
+
+    weathers.create(
+      temperature: weather_data['main']['temp'],
+      description: weather_data['weather'][0]['description'],
+      datetime: Time.at(weather_data['dt']),
+      fetched_at: Time.current
+    )
   end
 end

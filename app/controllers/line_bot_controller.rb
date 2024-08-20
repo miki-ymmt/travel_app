@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LineBotController < ApplicationController
-  protect_from_forgery except: [:callback]  # CSRF対策無効化
+  protect_from_forgery except: [:callback] # CSRF対策無効化
   skip_before_action :require_login, only: [:callback]
 
   def client

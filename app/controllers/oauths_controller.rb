@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class OauthsController < ApplicationController
   skip_before_action :require_login
-
 
   def oauth
     Rails.logger.debug "OAuth Provider: #{auth_params[:provider]}"
@@ -15,16 +16,16 @@ class OauthsController < ApplicationController
       puts "Logged in from provider: #{@user.inspect}" # デバッグ出力
       reset_session
       auto_login(@user)
-      redirect_to home_path, notice: "Googleアカウントでログインしました"
+      redirect_to home_path, notice: 'Googleアカウントでログインしました'
     else
       begin
-        Rails.logger.debug "User not found, signing up"
+        Rails.logger.debug 'User not found, signing up'
         sign_up_and_login_from(provider)
-        redirect_to home_path, notice: "Googleアカウントでログインしました"
-      rescue => e
+        redirect_to home_path, notice: 'Googleアカウントでログインしました'
+      rescue StandardError => e
         Rails.logger.error "Google認証に失敗しました: #{e.message}"
         Rails.logger.error "バックトレース: #{e.backtrace.join("\n")}"
-        redirect_to root_path, alert: "Google認証に失敗しました"
+        redirect_to root_path, alert: 'Google認証に失敗しました'
       end
     end
   end

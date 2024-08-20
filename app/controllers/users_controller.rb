@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: %i[new create]
   before_action :set_locale
 
   def new
@@ -11,9 +13,9 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to home_path, notice: "アカウントを作成しました"
+      redirect_to home_path, notice: 'アカウントを作成しました'
     else
-      flash.now[:alert] = "アカウントの作成に失敗しました"
+      flash.now[:alert] = 'アカウントの作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end

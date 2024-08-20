@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LineUser < ApplicationRecord
   belongs_to :user
 
