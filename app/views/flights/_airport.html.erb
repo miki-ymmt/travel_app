@@ -1,12 +1,20 @@
 <!-- Open the modal using ID.showModal() method -->
-<button class="bg-yellow-300 hover:bg-yellow-500 btn btn-wide mt-8 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg" onclick="airport_modal.showModal()">
-<i class="fas fa-light fa-location-dot"></i>空港での流れ
-</button>
+<div class="relative w-1/2 md:w-full mx-auto mt-4 mb-4 transform transition-transform duration-300 hover:scale-105 shadow-2xl" onclick="airport_modal.showModal()">
+  <%= image_tag "airport_task.png", class: "w-full h-auto rounded-lg" %>
+  <span class="absolute bottom-0 left-0 w-full text-center text-white py-10 text-lg bg-black bg-opacity-30 hover:text-yellow-400 hover:bg-opacity-50">空港での流れ</span>
+</div>
 <dialog id="airport_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box w-full max-w-7xl h-auto">
-    <h3 class="text-lg font-bold mb-6">空港での流れ</h3>
+
+  <div class="modal-action absolute top-0 right-0 m-4">
+      <form method="dialog">
+        <button class="btn">✕</button>
+      </form>
+  </div>
+
+    <h3 class="text-lg font-bold mb-6 text-center">空港での流れ</h3>
     <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
-    <p class="py-4 text-center leading-loose">
+    <p class="py-4 leading-loose">
     空港に着いてからの流れを順番にご案内します。<br>
     余裕を持って出発時刻の3時間前に空港に向かいましょう。
     </p>
@@ -19,9 +27,9 @@
       <li class="step step-accent">搭乗ゲートに向かう</li>
     </ul>
 
-    <div class="text-center leading-loose">
-      <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-12">1. チェックイン・スーツケースを預ける</h4>
-      <p class="py-2 text-center">
+    <div class="leading-loose">
+      <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-12">1. チェックイン・スーツケースを預ける</h4>
+      <p class="py-2">
         オンラインチェックインをしていない場合は<br>
         空港でチェックインを行います。<br>
         手荷物を預ける際は、受付カウンターで手続きを行います。<br>
@@ -29,36 +37,29 @@
       </p>
     </div>
 
-    <div class="text-center leading-loose">
-      <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-6">2. 保安検査</h4>
-      <p class="py-2 text-center">
+    <div class="leading-loose">
+      <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-6">2. 保安検査</h4>
+      <p class="py-2">
       危険物を持っていないかの確認をします。<br>
       大変混雑するので出発の60分前には通過しておくと安心です。<br>
       </p>
     </div>
 
-    <div class="text-center leading-loose">
-      <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-6">3. 出国審査</h4>
-      <p class="py-2 text-center">
+    <div class="leading-loose">
+      <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-6">3. 出国審査</h4>
+      <p class="py-2">
       パスポートと航空券を提示して出国審査を受けます。<br>
       出国審査を通過したら、搭乗ゲートに向かいます。<br>
       </p>
     </div>
 
-    <div class="text-center leading-loose">
+    <div class="leading-loose">
       <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-6">4. 搭乗ゲートに向かう</h4>
-      <p class="py-2 text-center">
+      <p class="py-2">
       搭乗ゲートには出発時刻の30分前までに到着しましょう。<br>
       搭乗ゲートが変更になることもあるので、電子掲示板で確認すると安心です。<br>
       出発時刻 = 飛行機が駐機場を離れる時刻です。
       </p>
-    </div>
-
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">✕</button>
-      </form>
     </div>
   </div>
 </dialog>

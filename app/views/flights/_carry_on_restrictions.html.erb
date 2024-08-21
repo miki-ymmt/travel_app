@@ -1,10 +1,18 @@
 <!-- Open the modal using ID.showModal() method -->
-<button class="bg-yellow-300 hover:bg-yellow-500 btn btn-wide px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4" onclick="carry_on_modal.showModal()">
-  <i class="fas fa-suitcase"></i>機内持ち込み制限品について
-</button>
+<div class="relative w-1/2 md:w-full mx-auto mt-4 mb-4 transform transition-transform duration-300 hover:scale-105" onclick="carry_on_modal.showModal()">
+  <%= image_tag "baggage.png", class: "w-full h-auto rounded-lg shadow-lg" %>
+  <span class="absolute bottom-0 left-0 w-full text-center text-white py-10 text lg font-semibold bg-black bg-opacity-30 hover:text-yellow-400 hover:bg-opacity-50">機内持ち込み制限品</span>
+</div>
 <dialog id="carry_on_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box w-full max-w-7xl h-auto">
-  <h3 class="text-lg font-bold mb-6">国際線 機内持ち込み制限品について</h3>
+
+  <div class="modal-action absolute top-0 right-0 m-4">
+    <form method="dialog">
+      <button class="btn">✕</button>
+    </form>
+  </div>
+
+  <h3 class="text-lg font-bold mb-6 text-center">国際線 機内持ち込み制限品について</h3>
     <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
     <p class="py-4 leading-loose">
     機内には保安上の理由で<br>
@@ -42,12 +50,6 @@
           <li>花火/クラッカー(預け入れも不可) </li>
         </ul>
       </div>
-    </div>
-    <div class="modal-action">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">✕</button>
-      </form>
     </div>
   </div>
 </dialog>
