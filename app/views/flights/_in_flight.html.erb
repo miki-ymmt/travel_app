@@ -1,24 +1,34 @@
 <!-- Open the modal using ID.showModal() method -->
-<button class="bg-yellow-300 hover:bg-yellow-500 btn btn-wide px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-8" onclick="in_flight_modal.showModal()">
-  <i class="fas fa-light fa-plane"></i>機内での過ごし方
-</button>
+<div class="relative w-1/2 md:w-full mx-auto mt-4 mb-4 transform transition-transform duration-300 hover:scale-105 shadow-2xl" onclick="in_flight_modal.showModal()">
+  <%= image_tag "sky_window.png", class: "w-full h-auto rounded-lg" %>
+  <span class="absolute bottom-0 left-0 w-full text-center  text-white py-10 text-lg bg-black bg-opacity-30 hover:text-yellow-400 hover:bg-opacity-50 hover:bg-opacity-50">機内での過ごし方</span>
+</div>
 <dialog id="in_flight_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box w-full max-w-7xl h-auto">
-    <h3 class="text-lg font-bold mb-6">機内での過ごし方</h3>
+
+
+  <div class="modal-action absolute top-0 right-0 m-4">
+      <form method="dialog">
+        <button class="btn">✕</button>
+      </form>
+  </div>
+
+    <h3 class="text-lg font-bold mb-6 text-center">機内での過ごし方</h3>
     <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
-    <p class="py-4 text-center leading-loose">
+    <p class="py-4 leading-loose">
     飛行機はワクワク、でもちょっぴり緊張しますよね。<br>
     ゆっくり寛げるように、機内での過ごし方をご紹介します。
     </p>
-    <div class="flex flex-col justify-center text-center">
-      <div class="text-center leading-loose">
+    <div class="flex flex-col justify-center">
+      <div class="leading-loose">
         <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-6">服装</h4>
         <%= image_tag "clothes.png", class: "w-48 h-48 mx-auto mt-4 my-4" %>
-        <p class="py-2">スウェットなどリラックスできる服装がおすすめです。特に長時間のフライトでは、締め付けの少ない服装が良いでしょう。<br>
+        <p class="py-2">スウェットなどリラックスできる服装がおすすめです。<br>
+        特に長時間のフライトでは、締め付けの少ない服装が良いでしょう。<br>
         機内は寒いので、羽織れるものを持っておくと便利です。
         </p>
       </div>
-      <div class="text-center leading-loose">
+      <div class="leading-loose">
         <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-6">ストレッチ法</h4>
         <%= image_tag "stretch.png", class: "w-48 h-48 mx-auto mt-4 my-4" %>
         <p class="py-2">
@@ -33,26 +43,22 @@
           <li>軽い腰のひねり</li>
         </ul>
       </div>
-      <div class="text-center leading-loose">
-        <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-6">こまめな水分補給</h4>
+      <div class="leading-loose">
+        <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-6">こまめな水分補給</h4>
         <%= image_tag "water.png", class: "w-48 h-48 mx-auto mt-4" %>
-        <p class="py-2 text-center">機内は乾燥しやすいため、こまめな水分補給が大切です。<br>
+        <p class="py-2">機内は乾燥しやすいため、こまめな水分補給が大切です。<br>
         客室乗務員に頼んで定期的に飲むようにしましょう。<br>
         上空は酔いやすいのでアルコールの摂取は控えめにすると良いです。
         </p>
       </div>
-      <div class="text-center leading-loose">
-        <h4 class="text-center text:sm sm:text-base font-bold badge badge-secondary mt-6">映画鑑賞</h4>
+      <div class="leading-loose">
+        <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-6">映画鑑賞</h4>
         <%= image_tag "movie.png", class: "w-48 h-48 mx-auto mt-4" %>
-        <p class="py-2 text-center">個人モニターでの映画鑑賞は飛行機の楽しみの一つ。<br>
+        <p class="py-2">
+        個人モニターでの映画鑑賞は飛行機の楽しみの一つ。<br>
         ぜひ機内食を食べながら楽しみましょう!<br>
         </p>
       </div>
-    <div class="modal-action justify-end">
-      <form method="dialog">
-        <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">✕</button>
-      </form>
     </div>
   </div>
 </dialog>

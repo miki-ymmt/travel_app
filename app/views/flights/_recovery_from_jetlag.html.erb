@@ -1,0 +1,55 @@
+<!-- Open the modal using ID.showModal() method -->
+<div class="relative w-1/2 md:w-full mx-auto mt-4 mb-4 transform transition-transform duration-300 hover:scale-105 shadow-l" onclick="recovery_from_jetlag_modal.showModal()">
+  <%= image_tag "jet_lag.png", class: "w-full h-auto rounded-lg" %>
+  <span class="absolute bottom-0 left-0 w-full text-center text-white py-10 text lg font-semibold bg-black bg-opacity-30 hover:text-yellow-400 hover:bg-opacity-50">時差ボケ対策</span>
+</div>
+<dialog id="recovery_from_jetlag_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box w-full max-w-7xl h-auto">
+
+  <div class="modal-action absolute top-0 right-0 m-4">
+    <form method="dialog">
+      <button class="btn">✕</button>
+    </form>
+  </div>
+  <h3 class="text-lg font-bold mb-6 text-center">時差ボケを防いで快適な旅を</h3>
+    <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
+    <p class="py-4 leading-loose">
+    旅行を楽しむためには、<br>
+    時差ボケをうまく乗り越えることが大切です。<br>
+    時差ボケは、身体のリズムと現地の時間が合わなくなることで、眠気やだるさが生じる現象です。<br>
+    事前に対策をしておくことで、症状を軽減できます。<br>
+    </p>
+    <div class="flex flex-col justify-center">
+      <div class="leading-loose">
+        <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-6">出発前</h4>
+        <%= image_tag "sleep.png", class: "w-52 h-52 mx-auto my-4" %>
+        <p>時差ボケは、ヨーロッパなど西へ向かうよりも、<br>
+        アメリカなど東に向かう方が強くなるといわれています。<br>
+        出発前から少しずつ現地時間に合わせて就寝時間をずらすと<br>
+        身体が慣れやすくなります。<br>
+        十分な睡眠を取ることで身体が疲れにくくなり、時差ボケを軽減できます。<br>
+        </p>
+      </div>
+      <div class="leading-loose">
+        <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-8">フライト中</h4>
+        <%= image_tag "watch.png", class: "w-48 h-48 mx-auto mt-4 my-4" %>
+        <p class="py-2">
+        機内では現地時間に時計を合わせて、できるだけ現地の時間で過ごしましょう。<br>
+        昼のフライトなら起きている時間を過ごし、<br>
+        夜のフライトなら寝る時間を作ると良いです。<br>
+        機内食は、できるだけ提供されたタイミングで食べましょう。<br>
+        機内食は現地時間に合わせた時間に提供されますので、<br>
+        体内リズムを整えやすくなります。
+        </p>
+      </div>
+      <div class="leading-loose">
+        <h4 class="text:sm sm:text-base font-bold badge badge-secondary mt-6">到着後</h4>
+        <%= image_tag "walking.png", class: "w-48 h-48 mx-auto mt-4" %>
+        <p class="py-2">
+        到着後すぐに太陽の光を浴びると、体内時計をリセットしやすくなります。<br>
+        日中はできるだけ外出して身体を動かすようにしましょう。<br>
+        </p>
+      </div>
+    </div>
+  </div>
+</dialog>

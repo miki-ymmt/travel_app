@@ -1,0 +1,70 @@
+<!-- Open the modal using ID.showModal() method -->
+<div class="relative w-1/2 md:w-full mx-auto mt-4 mb-4 transform transition-transform duration-300 hover:scale-105 shadow-2xl" onclick="inflight_meals_modal.showModal()">
+  <%= image_tag "flight_meal.png", class: "w-full h-auto rounded-lg" %>
+  <span class="absolute bottom-0 left-0 w-full text-center  text-white py-10 text-lg font-semibold bg-black bg-opacity-30 hover:text-yellow-400 hover:bg-opacity-50">機内食について</span>
+</div>
+<dialog id="inflight_meals_modal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box w-full max-w-7xl h-auto">
+
+  <div class="modal-action absolute top-0 right-0 m-4">
+    <form method="dialog">
+      <button class="btn">✕</button>
+    </form>
+  </div>
+
+
+  <h3 class="text-lg font-bold mb-6 text-center">機内食について</h3>
+    <div class="border-t border-dashed border-4 border-blue-800 mb-10"></div>
+    <p class="py-4 leading-loose">
+    飛行機での食事は、空の旅をより特別なものにする楽しみのひとときです。<br>
+    食事制限やアレルギー、宗教に合わせたお食事のほかにも、月替わりのメニューからお好みのものを選ぶことができます。<br>
+    ホームページにもメニューが載っているので、ぜひチェックしてみましょう！
+    </p>
+    <div class="flex flex-col justify-center">
+      <div class="leading-loose">
+        <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-6">機内食の選び方</h4>
+        <%= image_tag "meal_service.png", class: "w-60 h-60 mx-auto mt-4 my-4" %>
+        <p class="py-2">機内食の内容は路線や会社によって異なりますが、１種類もしくは２種類からお好みのメニューを選択できることが多いです。<br>
+        <br>
+        </p>
+      </div>
+      <div class="leading-loose">
+        <h4 class="font-bold text:sm sm:text-base badge badge-secondary mt-6">特別機内食のリクエスト</h4>
+        <%= image_tag "special_meal.png", class: "w-48 h-48 mx-auto mt-4 my-4" %>
+        <p class="py-2">特別な食事制限や宗教的な理由で特別機内食が必要な場合は、
+        航空会社に事前に特別機内食をリクエストすることができます。<br>
+        </p>
+        <br>
+        【特別機内食の例】<br>
+        <ul class="list-disc text-left ml-6 space-y-2 inline-block">
+          <li>7品目、28品目アレルゲン対応食</li>
+          <li>乳幼児/お子様向けのお食事</li>
+          <li>ベジタリアン向けのお食事</li>
+          <li>低カロリーのお食事</li>
+          <li>低糖質のお食事</li>
+          <li>低塩分のお食事</li>
+          <li>フルーツのお食事</li>
+          <li>グルテンフリーのお食事</li>
+          <li>イスラム教対応のお食事</li>
+          <li>ヒンドゥー教対応のお食事</li>
+          <li>ユダヤ教対応のお食事</li>
+        </ul>
+        <br>
+        <br>
+        【リクエスト方法】<br>
+        <p class="py-2">航空会社のホームページから、<br>
+        予約時に特別機内食のリクエストを行うことができます。<br>
+        詳細については、利用する航空会社の公式サイトを確認することをおすすめします。
+        <br>
+        <br>
+        【注意事項（日本発・外地発）】
+        <ul class="list-disc text-left ml-6 space-y-2 inline-block">
+          <li>特別食のリクエスト期限 ▶︎ 出発の24時間~48時間前まで</li>
+          <li>アレルゲン対応食のリクエスト期限 ▶ 出発の48時間前まで</li>
+          (※電話orメールでの問い合わせが必要な場合があります)
+        </ul>
+      </div>
+    </div>
+  </div>
+</dialog>
+

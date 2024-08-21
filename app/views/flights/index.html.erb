@@ -1,12 +1,14 @@
 <div class="container mx-auto mt-20 min-h-screen">
   <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8">フライトの準備は万全ですか？</h1>
+    <p class="text-center text-sm sm:text-lg mb-8">
+        快適なフライトのために知っておきたいこと
+    </p>
 
-  <div class="card bg-blue-50 w-2/3 mx-auto flex justify-center items-center shadow-xl rounded-lg p-6">
-    <div class="card-body text-center flex flex-col items-center justify-center">
-      <h2 class=" card-title mb-6 mt-6 text-center text-base sm:text-xl font-semibold">快適なフライトのために知っておきたいこと</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
       <%= render 'flights/carry_on_restrictions' %>
-      <%= render 'flights/in_flight' %>
       <%= render 'flights/airport' %>
+      <%= render 'flights/in_flight' %>
+      <%= render 'flights/inflight_meal_options' %>
+      <%= render 'flights/recovery_from_jetlag' %>
     </div>
-  </div>
 </div>
