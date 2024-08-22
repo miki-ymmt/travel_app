@@ -17,10 +17,10 @@ class ChatbotsController < ApplicationController
         model: 'gpt-4o-mini',
         messages: [
           { role: 'system',
-            content: 'あなたは海外旅行初心者に役立つ優秀な旅行アシスタントです。ユーザーの質問に対して、日本語で明確かつ簡潔な旅行アドバイスを提供してください。300字以内で書いてください。リストや重要なポイントを箇条書きで改行してください。各ポイントには具体例や説明を加えてください。記号やマークダウン形式（**など）は使用しないでください。' },
+            content: 'あなたは海外旅行初心者に役立つ優秀な旅行アシスタントです。ユーザーの質問に対して、日本語で明確かつ簡潔な旅行アドバイスを提供してください。140字以内で書いてください。リストや重要なポイントを箇条書きで改行してください。各ポイントには具体例や説明を加えてください。記号やマークダウン形式（**など）は使用しないでください。' },
           { role: 'user', content: prompt }
         ],
-        max_tokens: 500,
+        max_tokens: 300,
         temperature: 0.7
       }
     )
@@ -32,7 +32,5 @@ class ChatbotsController < ApplicationController
               else
                 '回答が見つかりませんでした'
               end
-
-    respond_to(&:turbo_stream)
   end
 end
