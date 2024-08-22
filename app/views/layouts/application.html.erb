@@ -22,17 +22,34 @@
     <%= favicon_link_tag image_path('icon.png'), type: 'image/png' %>
   </head>
 
-  <body class="bg-icicle text-gray-700 font-zen">
-  <% if logged_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/before_login_header' %>
-  <% end %>
-  <main class="flex-grow">
-  <%= render 'layouts/flash_messages' %>
-  <%= yield %>
-  </main>
-  <%= render 'shared/footer' %>
-  <%= javascript_include_tag 'lightbox-plus-jquery.min' %>
+  <body class="bg-icicle text-gray-700 font-zen relative">
+
+  <div id="spinner-container" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" data-loading-spinner-target="spinner">
+    <span class="loading loading-spinner loading-lg text-primary"></span>
+  </div>
+
+  <div class="relative z-10">
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <main class="flex-grow">
+    <%= render 'layouts/flash_messages' %>
+    <%= yield %>
+    </main>
+    <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'lightbox-plus-jquery.min' %>
+  </div>
+
+  <script>
+  document.addEventListener("turbo:submit-start", function() {
+      document.getElementById("spinner-container").classList.remove("hidden");
+  });
+
+  document.addEventListener("turbo:submit-end", function() {
+      document.getElementById("spinner-container").classList.add("hidden");
+  });
+  </script>
   </body>
 </html>
