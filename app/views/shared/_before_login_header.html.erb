@@ -1,20 +1,32 @@
-<div class="navbar bg-cerulean text-white py-4">
-  <div class="flex-1">
-    <%= link_to root_path, class: "btn btn-ghost p-0" do %>
-      <%= image_tag "logo.png", class: "w-24 h-16" %>
-    <% end %>
-  </div>
+<div class="navbar bg-transparant p-4 absolute top-0 left-0 w-full z-10">
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-4">
-      <li>
-        <details class="relative">
-          <summary>MENU</summary>
-          <ul class="absolute right-0 bg-base-100 rounded p-2 mt-1 w-48 shadow-lg text-blue-950">
-            <li><%= link_to "アカウント登録", new_user_path %></li>
-            <li><%= link_to "ログイン", login_path %></li>
-          </ul>
-        </details>
-      </li>
+    <label for="my-drawer-4" class="drawer-button btn btn-ghost fixed top-4 right-3 p-0 w-20 h-20">
+      <%= image_tag "menu_icon.png", class: "w-16 h-16" %>
+    </label>
+  </div>
+</div>
+
+<div class="drawer drawer-end z-50">
+  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content here -->
+  </div>
+  <div class="drawer-side z-50">
+    <label for="my-drawer-4" class="drawer-overlay z-40"></label>
+    <ul class="menu bg-white bg-opacity-80 text-base-content min-h-full w-80 p-4 shadow-lg z-50">
+      <!-- Drawer content here -->
+      <li><%= link_to "トップ", root_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "アカウント登録", new_user_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "ログイン", login_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "アプリの使い方", usage_instructions_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <div class="divider divider-default"></div>
+      <li><%= link_to "利用規約", "#", class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "プライバシーポリシー", "#", class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "お問い合わせ", "#", class: "hover:bg-cerulean hover:text-white", target: :_blank, rel: "noopener noreferrer" %></li>
+      <div class="divider divider-default"></div>
+      <div class="text-center text-sm py-2">
+        © 2024 - Travel Starter
+      </div>
     </ul>
   </div>
 </div>

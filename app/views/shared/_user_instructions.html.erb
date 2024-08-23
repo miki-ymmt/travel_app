@@ -1,38 +1,13 @@
-<%= render 'shared/before_login_header' %>
-<div class="flex flex-col justify-center items-center min-h-screen p-6 bg-sky">
-    <h1 class="text-8xl font-bold text-blue-950 font-caveat">Travel Starter</h1>
-    <p class="text-lg text-blue-950 mt-4">あなたの旅が、ここから始まる</p>
-    <div class="mt-6 flex space-x-10">
-        <%= link_to new_user_path, class: "btn btn-primary rounded shadow-lg" do %>
-        今すぐはじめる
-        <% end %>
-        <%= link_to login_path, class: "btn btn-secondary rounded shadow-lg" do %>
-        ログイン
-        <% end %>
-    </div>
-</div>
-
-<div class="flex flex-col justify-center items-center py-20">
-<h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center">
-  <span class="font-caveat" style="font-family: 'Caveat', cursive;">Travel Starter</span>
-  <span class="font-zen" style="font-family: 'Zen Maru Gothic', serif;">とは？</span>
-</h1>
-  <p class="text-center leading-loose">
-    『海外旅行に行ってみたい！でも、何を準備すればいいのかわからない…』<br>
-    そう思ったことはありませんか？<br>
-    Travel Starterは、そんなあなたのための旅行準備サポートアプリです。<br>
-    便利なTO DOチェックリストやフライトにまつわる情報など、<br>
-    旅行前の不安を解消し、安心して旅立てるようお手伝いします。<br>
-    さあ、一緒に旅の準備を始めましょう！
-  </p>
-</div>
+<% unless logged_in? %>
+  <%= render 'shared/before_login_header' %>
+<% end %>
 
 <div class="flex flex-col justify-center items-center py-6">
-<h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center">
+<h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center mt-16">
   <span class="font-caveat" style="font-family: 'Caveat', cursive;">Travel Starter</span>
   <span class="font-zen" style="font-family: 'Zen Maru Gothic', serif;">でできること</span>
 </h1>
-  <div class="card glass w-2/3">
+  <div class="card glass w-2/3 mt-10">
     <div class="card-body justify-center items-center">
     <%= link_to "旅を登録する", "#", class: "bg-yellow-300 hover:bg-yellow-500 mt-6 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg pointer-events-none" %>
       <p class="mt-4">あなたの行き先・出発日・帰国日を登録できます。</p>
