@@ -1,26 +1,42 @@
 <div class="navbar bg-cerulean text-white py-4">
   <div class="flex-1">
-    <%= link_to home_path, class: "btn btn-ghost p-0" do %>
-      <%= image_tag "logo.png", class: "w-24 h-16" %>
-    <% end %>
+    <%= link_to "Travel Starter", home_path, class: "btn btn-ghost p-2 text-xl md:text-2xl font-caveat" %>
   </div>
   <div class="flex-none">
-    <ul class="menu menu-horizontal px-1">
-      <li>
-      <details class="relative">
-      <summary>MENU</summary>
-      <ul class="absolute right-0 bg-base-100 rounded p-2 mt-1 w-48 shadow-lg text-blue-950 z-50">
-        <li><%= link_to "PASSPORT", new_passport_path %></li>
-        <li><%= link_to "SCHEDULE", trips_path %></li>
-        <li><%= link_to "FLIGHT", flights_path %></li>
-        <li><%= link_to "AI CHATBOT", chatbots_ask_path %></li>
-        <li><%= link_to "ホーム", home_path %></li>
-        <li><%= link_to "マイページ", user_path(current_user) %></li>
-        <li><%= link_to "アカウント削除", user_path(current_user), data: { turbo_method: "delete", turbo_confirm: '本当に退会しますか？'} %></li>
-        <li><%= button_to "ログアウト", logout_path, method: :delete %></li>
-      </ul>
-    </details>
-      </li>
+    <label for="my-drawer-4" class="drawer-button btn btn-ghost">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-8 h-8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
+      </svg>
+    </label>
+  </div>
+</div>
+
+<div class="drawer drawer-end z-50">
+  <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content">
+    <!-- Page content here -->
+  </div>
+  <div class="drawer-side z-50">
+    <label for="my-drawer-4" class="drawer-overlay z-40"></label>
+    <ul class="menu bg-white bg-opacity-80 text-base-content min-h-full w-80 p-4 shadow-lg z-50">
+      <!-- Drawer content here -->
+      <li><%= link_to "アプリの使い方", usage_instructions_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <div class="divider divider-default"></div>
+      <li><%= link_to "パスポート", new_passport_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "スケジュール", trips_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "フライト", flights_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "AIチャットbot", chatbots_ask_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "ホーム", home_path, class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "マイページ", user_path(current_user), class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "ログアウト", logout_path, data: { turbo_method: :delete }, class: "hover:bg-cerulean hover:text-white" %></li>
+      <div class="divider divider-default"></div>
+      <li><%= link_to "利用規約", "#", class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "プライバシーポリシー", "#", class: "hover:bg-cerulean hover:text-white" %></li>
+      <li><%= link_to "お問い合わせ", "#", class: "hover:bg-cerulean hover:text-white", target: :_blank, rel: "noopener noreferrer" %></li>
+      <div class="divider divider-default"></div>
+      <div class="text-center text-sm py-2">
+        © 2024 - Travel Starter
+      </div>
     </ul>
   </div>
 </div>

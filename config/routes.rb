@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'static_pages#top'
+  get 'top' => 'static_pages#top', as: :top
   resources :users, only: %i[new create show edit update destroy]
   resources :trips do
     member do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
   get 'line_auth/callback' => 'line_auth#callback'
   resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  get 'usage_instructions' => 'pages#usage_instructions'
   # resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
