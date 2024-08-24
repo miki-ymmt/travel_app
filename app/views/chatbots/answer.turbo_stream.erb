@@ -4,7 +4,7 @@
       <div class="chat-header text-xs sm:text-base text-right">
         <%= current_user.name %>
       </div>
-      <div class="chat-bubble bg-blue-200 max-w-xs mx-2 py-2 px-4 rounded-lg relative text-xs sm:text-base text-right py-4">
+      <div class="chat-bubble bg-blue-200 max-w-xs mx-2 py-2 px-4 rounded-lg relative text-xs sm:text-base text-right py-4 leading-relaxed">
         <div><%= params[:question] %></div>
       </div>
     </div>
@@ -25,7 +25,7 @@
       <div class="chat-header text-xs sm:text-base text-left">
         AI chatbot
       </div>
-      <div class="chat-bubble bg-green-200 max-w-xs mx-2 py-4 px-4 rounded-lg relative text-xs sm:text-base">
+      <div class="chat-bubble bg-green-200 max-w-xs mx-2 py-4 px-4 rounded-lg relative text-xs sm:text-base leading-relaxed">
         <div><%= @answer %></div>
         <div class="absolute w-3 h-3 bg-green-500 bottom-0 right-2 transform translate-y-1/2 rotate-45"></div>
       </div>
