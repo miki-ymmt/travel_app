@@ -1,44 +1,26 @@
-<div class="container mx-auto min-h-screen mt-20 flex">
-  <!-- 左側のボタン  -->
-  <div class="w-1/4 flex flex-col space-y-10 mt-20">
-    <%= link_to new_passport_path, class: "inline-block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto font-caveat" do %>
-    <%= image_tag "passport.png", class: "w-20 mx-auto mb-2" %>
-    Passport
-    <% end %>
-    <%= link_to trips_path, class: "block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto font-caveat" do %>
-    <%= image_tag "plan.png", class: "w-20 mx-auto mb-2" %>
-    Schedule
-    <% end %>
-    <%= link_to flights_path, class: "block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto font-caveat" do %>
-    <%= image_tag "flight.png", class: "w-20 mx-auto mb-2" %>
-    Flight
-    <% end %>
-    <%= link_to chatbots_ask_path, class: "block p-2 bg-blue-topaz text-center text-white rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 w-auto mx-auto font-caveat" do %>
-      <%= image_tag "chatbot.png", class: "w-20 mx-auto mb-2" %>
-      AI Chatbot
-    <% end %>
-  </div>
+<div class="container mx-auto min-h-screen mt-10 flex">
 
   <!-- メインコンテンツ -->
-  <div class="w-3/4 ml-4 p-6 rounded text-center">
+  <div class="w-full ml-4 p-6 rounded text-center">
     <% if @next_trip %>
       <% unless @next_trip.destination == "その他の国" %>
         <% if @weather_info %>
-          <div class="card bg-base-100 shadow-xl mb-8 w-full max-w-xl mx-auto">
-            <div class="card-body">
-              <% if @weather_info['error'] %>
-                <p class="text-red-500"><%= @weather_info['error'] %></p>
-              <% else %>
-                <div class="flex items-center justify-between mb-3">
-                  <div class="text-md sm:text-lg font-semibold"><%= @next_trip.destination %>の天気</div>
-                  <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:temperature] %> °C</div>
-                </div>
-                <div class="mt-2 text-center">
-                  <div class="text-md sm:text-lg font-semibold"><%= @weather_info[:description] %></div>
-                </div>
-              <% end %>
-              <div class="mt-4 flex justify-center">
-                <%= button_to "最新の天気を見る", home_path, method: :get, class: "btn btn-outline btn-info btn-sm rounded mt-4 hover:shadow-sm hover:translate-y-0.5 transform transition" %>
+          <div class="card bg-base-100 shadow-md mb-8 w-full max-w-xl mx-auto rounded-lglg h-20 w-3/4 flex items-center px-6">
+            <div class="flex justify-between w-full items-center">
+              <div class="text-sm sm: text-base font-medium text-gray-600 mt-4">
+                <p>次の旅行先</p>
+                <%= @next_trip.destination %>の天気
+              </div>
+              <div class="text-sm sm: text-base font-medium text-gray-600 mt-4">
+                <%= @weather_info[:temperature] %> °C
+              </div>
+              <div class="text-xs sm: text-sm font-medium text-gray-600 mt-4">
+                <%= @weather_info[:description] %>
+              </div>
+              <div>
+                <%= link_to home_path, method: :get do %>
+                  <%= image_tag "tap.png", class: "w-10 h-10 mt-4 transition transform hover:scale-110 duration-300 ease-in-out" %>
+                <% end %>
               </div>
             </div>
           </div>
@@ -52,22 +34,57 @@
       <p>次の旅行が登録されていません。</p>
     <% end %>
 
-    <h1 class="text-xl md:text-3xl font-bold text-center mt-12">
-      旅の予定を立てましょう！
-    </h1>
-    <%= image_tag "home.png", class: "w-full sm:w-1/2 mx-auto mb-8 mt-8" %>
-    <%= link_to "旅を登録する", new_trip_path, class: "bg-yellow-300 hover:bg-yellow-500 btn btn-primary mt-4 px-6 py-3 rounded shadow-lg hover:shadow-sm hover:translate-y-0.5 transform transition" %>
-
-    <div class="card glass w-full mt-6">
-      <div class="mt-6 text-center">
-        <p>LINEと連携すると<br>
-        出発予定日の1週間前から<br>
-        メッセージが届きます！</p>
-        <%= link_to line_link_path, method: :get do %>
-          <%= image_tag "btn_login.png", class: "w-32 mx-auto mt-4 mb-4" %>
-        <% end %>
+    <!-- カルーセルの追加 -->
+    <div class="carousel w-full h-56 sm:h-72 md:h-96 lg:h-[500px] mt-8">
+      <div id="slide1" class="carousel-item relative w-full h-full">
+        <%= image_tag "slide1.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide4" class="btn btn-circle">❮</a>
+        <a href="#slide2" class="btn btn-circle">❯</a>
       </div>
     </div>
+    <div id="slide2" class="carousel-item relative w-full h-full">
+      <%= image_tag "slide2.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide1" class="btn btn-circle">❮</a>
+        <a href="#slide3" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide3" class="carousel-item relative w-full h-full">
+      <%= image_tag "slide3.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide2" class="btn btn-circle">❮</a>
+        <a href="#slide4" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide4" class="carousel-item relative w-full h-full">
+      <%= image_tag "slide4.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide3" class="btn btn-circle">❮</a>
+        <a href="#slide1" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide5" class="carousel-item relative w-full h-full">
+      <%= image_tag "slide5.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide3" class="btn btn-circle">❮</a>
+        <a href="#slide1" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+    <div id="slide6" class="carousel-item relative w-full h-full">
+      <%= image_tag "slide6.svg", class: "w-full h-full object-cover" %>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <a href="#slide3" class="btn btn-circle">❮</a>
+        <a href="#slide1" class="btn btn-circle">❯</a>
+      </div>
+    </div>
+  </div>
+
+    <h1 class="text-xl md:text-3xl font-bold mt-20">
+      次はどこへ旅しますか？
+    </h1>
+    <p class="mt-6">行き先を登録すると、現地の天気と持ち物リストがすぐに確認できます！</p>
+    <%= link_to "旅を登録する", new_trip_path, class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold transform hover:scale-105 transition duration-300 ease-in-out mt-10", style: "border-image: linear-gradient(to right, #ec4899, #3b82f6) 1;" %>
   </div>
 </div>
 

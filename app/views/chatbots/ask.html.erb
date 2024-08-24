@@ -1,4 +1,4 @@
-<div class="container mx-auto mt-20 min-h-screen flex flex-col">
+<div class="container mx-auto mt-20 min-h-screen flex flex-col pb-24">
   <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8">AI Chatbot</h1>
   <p class="text-center text-xs sm:text-base">旅について知りたいこと、不安なことはありませんか？</p>
   <p class="text-center text-xs sm:text-base">AI Chatbotに質問してみましょう！</p>
@@ -15,20 +15,23 @@
           <div class="chat-header text-xs sm:text-base text-gray-500">
             AI chatbot
           </div>
-          <div class="chat-bubble bg-green-200 max-w-xs mx-2 py-4 px-4 rounded-lg relative text-xs sm:text-base">
+          <div class="chat-bubble bg-green-200 max-w-xs mx-2 py-4 px-4 rounded-lg relative text-xs sm:text-base leading-relaxed">
             <p>こんにちは！私はAI Chatbotです。何か質問があればお気軽にどうぞ！</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="fixed bottom-0 left-0 right-0 bg-white p-4">
+    <div class="fixed bottom-0 left-0 right-0 bg-white p-4 pb-20">
       <%= form_with(model: @chatbot, url: chatbots_answer_path, data: { controller: "form-reset loading-spinner", action: "turbo:submit-end->form-reset#reset turbo:submit-start->loading-spinner#show turbo:submit-end->loading-spinner#hide", turbo_frame: "chatbot-form" }) do |f| %>
         <div class="form-group flex items-center space-x-4 w-full">
-          <div class="mr-2 flex-grow">
+          <div class="mr-2 flex-grow flex items-center">
             <%= f.text_area :question, placeholder: "聞きたい内容を入力してください", class: "input input-bordered w-full h-16 rounded text-sm" %>
-          </div>
-          <div>
-            <%= f.submit "質問する", class: "bg-purple-300 hover:bg-purple-500 btn btn primary px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg", data: { loading_spinner_target: "submitButton"} %>
+            <%= f.submit class: "hidden", data: { loading_spinner_target: "submitButton" } %>
+            <button type="submit" class="p-0 pl-6 pr-0">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 hover:scale-110 transform transition-all">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+              </svg>
+            </button>
           </div>
         </div>
       <% end %>
