@@ -37,9 +37,14 @@
       <div class="text-center text-sm py-2">
         © 2024 - Travel Starter
       </div>
-      <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Travel%20Starter%20で海外旅行をもっと身近に！%0A%23travel_with_travel_starter", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
-        <%= image_tag 'logo-black.png', class: 'w-7 h-7 ml-10 mt-10' %>
-      <% end %>
+      <div class="flex justify-center space-x-10 mt-10">
+        <%= link_to "https://twitter.com/intent/tweet?url=#{root_url}&text=Travel%20Starter%20で海外旅行をもっと身近に！%0A%23travel_with_travel_starter", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+          <%= image_tag 'logo-black.png', class: 'h-8 w-6' %>
+        <% end %>
+        <%= link_to "https://github.com/miki-ymmt", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "GitHub" do %>
+          <%= image_tag 'github-mark.png', class: 'h-8' %>
+        <% end %>
+      </div>
     </ul>
   </div>
 </div>
