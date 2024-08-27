@@ -114,4 +114,3 @@ Rails.application.configure do
   config.hosts << "adventure-travel-starter.com"
   config.hosts << "travel-starter.onrender.com"
 end
-
