@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   get 'usage_instructions' => 'pages#usage_instructions'
+  get 'statistic_pages/policy' => 'static_pages#policy', as: :policy
+  get 'statistic_pages/terms' => 'static_pages#terms', as: :terms
   # resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
