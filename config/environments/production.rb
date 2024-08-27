@@ -81,13 +81,13 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'travel-starter.onrender.com',
+    domain: 'adventure-travel-starter.com',
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: 'travel-starter.onrender.com', protocol: 'https' } # メール内に記載されるURLにホスト名を設定
+  config.action_mailer.default_url_options = { host: 'adventure-travel-starter.com', protocol: 'https' } # メール内に記載されるURLにホスト名を設定
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -111,4 +111,5 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.hosts << "adventure-travel-starter.com"
 end
