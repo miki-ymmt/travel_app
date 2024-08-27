@@ -113,3 +113,4 @@ Rails.application.configure do
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.hosts << "adventure-travel-starter.com"
 end
+
