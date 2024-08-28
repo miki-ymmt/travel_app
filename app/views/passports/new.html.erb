@@ -1,14 +1,14 @@
 <div class="container mx-auto mt-20 min-h-screen">
-  <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8">パスポートを準備しましょう！</h1>
+  <h1 class="text-2xl sm:text-3xl font-bold text-center mb-8">パスポートの準備をしましょう！</h1>
 
-  <div class="card bg-blue-50 w-96 mx-auto flex justify-center items-center shadow-xl rounded-lg p-6">
+  <div class="card bg-blue-50 w-96 lg:w-1/2 sm:w-80 mx-auto flex justify-center items-center shadow-xl rounded-lg p-6">
     <div class="card-body text-center flex flex-col items-center justify-center">
-      <h2 class=" card-title mb-6 mt-6 text-center text-base sm:text-xl font-semibold">パスポートの写真を持っておくメリットって?</h2>
-      <p>旅行中にパスポートを紛失したり盗難に遭った場合、パスポートの写真があると迅速に対処することができます。<br>
+      <h2 class=" card-title mb-6 mt-6 text-center text-base sm:text-xl font-semibold">パスポートの写真を準備するメリットとは？</h2>
+      <p class="text-left">旅行中にパスポートを紛失したり盗難に遭った際、パスポートの写真があれば迅速に対応できます。<br>
        また、オンラインチェックインやホテルの予約時にも便利です。<br>
        いつでもパスポートの情報が確認できるように、パスポートの写真を撮ってアップロードしておくと安心です。（任意）
       </p>
-     <%= image_tag "sample_passport.png", class: "w-64 sm:w-96 mt-6" %>
+     <%= image_tag "sample_passport.png", class: "w-64 sm:w-96 mt-4" %>
     <div class="flex justify-center items-center space-x-4 mb-8">
       <%= form_with model: @passport, data: { turbo_frame: 'passport-photo' } do |form| %>
         <%= render 'shared/error_messages', object: form.object %>
