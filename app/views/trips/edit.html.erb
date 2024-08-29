@@ -1,26 +1,43 @@
 <div class="container mx-auto mt-20 min-h-screen">
   <h1 class="text-3xl font-bold text-center mb-12">旅の編集</h1>
-  <div class="card bg-blue-50 shadow-xl p-8 rounded max-w-md mx-auto mt-10">
+  <p class="text-center text-sm sm:text-lg mb-8">
+  行き先を変更すると、その行き先に合わせてTODOリストが自動的に再生成されます。<br>
+  編集後、TODOリストを確認して準備を進めましょう！
+  </p>
+
+  <!-- フォームを中央に配置し、背景色と余白を調整 -->
+  <div class="card bg-blue-50 shadow-xl p-8 rounded max-w-lg mx-auto mt-16">
     <%= form_with(model: @trip, local: true) do |form| %>
-      <div class="mb-4 text-sm md:text-lg mt-6">
-        <%= form.label :destination, "行き先", class: "block text-gray-700 text-xl font-semibold mb-2" %>
-        <%= form.select :destination, options_for_select(["ロサンゼルス", "ニューヨーク", "ハワイ", "シドニー", "バンコク", "ローマ", "ロンドン", "パリ", "ソウル", "上海", "台北", "マドリード", "ミュンヘン", "シンガポール", "クアラルンプール", "香港", "アムステルダム", "ホーチミン", "ブリュッセル", "その他の国"]), {}, class: "form-select block w-full mt-1 sm:text-base" %>
+
+      <!-- 行き先セレクトボックス -->
+      <div class="mb-6">
+        <%= form.label :destination, "行き先", class: "block text-gray-700 text-lg font-semibold mb-2" %>
+        <%= form.select :destination,
+              options_for_select(["ロサンゼルス", "ニューヨーク", "ハワイ", "シドニー", "バンコク",
+                                  "ローマ", "ロンドン", "パリ", "ソウル", "上海", "台北", "マドリード",
+                                  "ミュンヘン", "シンガポール", "クアラルンプール", "香港", "ホーチミン",
+                                  "アムステルダム", "ブリュッセル", "その他の国"]),
+              {},
+              class: "form-select block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
       </div>
 
-      <div class="flex flex-wrap mb-4 text-sm md:text-lg mt-20">
-        <div class="w-full md:w-1/2 pr-2 mb-4 md:mb-0">
-          <%= form.label :departure_date, "出発日", class: "block text-gray-700 text-xl font-semibold mb-2" %>
-          <%= form.date_field :departure_date, class: "form-input block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base" %>
+      <!-- 出発日と帰国日のフィールドを横並びに配置 -->
+      <div class="flex flex-col md:flex-row justify-between mb-6 space-y-4 md:space-y-0 md:space-x-4">
+        <div class="w-full">
+          <%= form.label :departure_date, "出発日", class: "block text-gray-700 text-lg font-semibold mb-2" %>
+          <%= form.date_field :departure_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
         </div>
-        <div class="w-full md:w-1/2 pl-2">
-          <%= form.label :return_date, "帰国日", class: "block text-gray-700 text-xl font-semibold mb-2" %>
-          <%= form.date_field :return_date, class: "form-input block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm sm:text-base" %>
+        <div class="w-full">
+          <%= form.label :return_date, "帰国日", class: "block text-gray-700 text-lg font-semibold mb-2" %>
+          <%= form.date_field :return_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
         </div>
       </div>
 
+      <!-- 更新ボタン -->
       <div class="text-center">
-        <%= form.submit "更新", class: "bg-yellow-300 hover:bg-yellow-500 btn btn primary mt-4 px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg mt-4" %>
+        <%= form.submit "更新", class: "bg-yellow-400 hover:bg-yellow-600 btn btn-primary font-bold px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg ml-4" %>
       </div>
+
     <% end %>
   </div>
 </div>
