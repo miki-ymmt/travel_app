@@ -33,6 +33,12 @@ class PassportsController < ApplicationController
     end
   end
 
+  def destroy
+    @passport = Passport.find_by(id: params[:id])
+    @passport.destroy
+    redirect_to new_passport_path, notice: 'パスポート写真を削除しました'
+  end
+
   def set_passport
     @passport = Passport.find_by(id: params[:id])
   end
