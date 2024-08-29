@@ -8,7 +8,8 @@
        また、オンラインチェックインやホテルの予約時にも便利です。<br>
        いつでもパスポートの情報が確認できるように、パスポートの写真を撮ってアップロードしておくと安心です。（任意）
       </p>
-     <%= image_tag "sample_passport.png", class: "w-64 sm:w-96 mt-4" %>
+     <%= image_tag "sample_passport.png", class: "w-64 sm:w-96" %>
+     <p class="text-sm text-gray-500">※拡張子はjpg, jpeg, gif, pngのみ対応</p>
     <div class="flex justify-center items-center space-x-4 mb-8">
       <%= form_with model: @passport, data: { turbo_frame: 'passport-photo' } do |form| %>
         <%= render 'shared/error_messages', object: form.object %>
@@ -35,7 +36,8 @@
       <a href="<%= @passport.photo.url %>" data-lightbox="passport">
         <%= image_tag @passport.photo.url, class: "rounded shadow-lg w-48 sm:w-64 inline-block" %>
       </a>
-      <p class="text-sm text-gray-500 mt-2">クリックして画像を拡大表示できます。</p>
+      <p class="text-sm text-gray-500 mt-6">クリックして画像を拡大表示できます。</p>
+      <%= link_to '削除する', passport_path(@passport), data: { turbo_method: "delete", turbo_confirm: "本当に削除しますか？" }, class: "text-red-500 hover:text-red-700 mt-4" %>
       </div>
     <% end %>
   </div>
