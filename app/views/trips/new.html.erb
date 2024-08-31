@@ -1,8 +1,10 @@
 <div class="container mx-auto mt-20 min-h-screen">
   <h1 class="text-3xl font-bold text-center mb-12">旅を登録しましょう！</h1>
   <p class="text-center text-smsm sm:text-lg mb-8">
-  行き先と日程を登録すると、スケジュール画面から確認できます。<br>
-  後で編集や削除も可能ですので、安心してご利用ください。<br>
+  行き先と日程を登録すると<br>
+  スケジュール画面から確認できます。<br>
+  後で編集や削除も可能ですので<br>
+  安心してご利用ください。<br>
   旅を登録後、TODOリストを確認して準備を進めましょう！
   </p>
 
@@ -26,13 +28,21 @@
       <div class="flex flex-col md:flex-row justify-between mb-6 space-y-4 md:space-y-0 md:space-x-4">
         <div class="w-full">
           <%= form.label :departure_date, "出発日", class: "block text-gray-700 text-lg font-semibold mb-2" %>
-          <%= form.date_field :departure_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
+          <%= form.date_field :departure_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base", min: Date.current.strftime("%Y-%m-%d"), id: "departure_date" %>
         </div>
         <div class="w-full">
           <%= form.label :return_date, "帰国日", class: "block text-gray-700 text-lg font-semibold mb-2" %>
-          <%= form.date_field :return_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base" %>
+          <%= form.date_field :return_date, class: "form-input block w-full mt-2 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-base", min: Date.current.strftime("%Y-%m-%d"), id: "return_date" %>
         </div>
       </div>
+
+    <script>
+      document.getElementById('departure_date').addEventListener('change', function() {
+      const departureDate = new Date(this.value);
+      const returnDateInput = document.getElementById('return_date');
+      returnDateInput.min = this.value; // 出発日を基に最小日付を設定
+      });
+    </script>
 
       <!-- 登録ボタン -->
       <div class="text-center">
