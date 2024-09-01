@@ -1,15 +1,17 @@
 <%= render 'shared/before_login_header' %>
 <div class="flex flex-col justify-center items-center min-h-screen p-6 bg-sky">
-    <h1 class="text-8xl font-bold text-blue-950 font-caveat">Travel Starter</h1>
-    <p class="text-lg text-blue-950 mt-4">あなたの旅が、ここから始まる</p>
+    <h1 class="text-6xl md:text-9xl font-bold text-blue-950 font-caveat animate-puff-in-center mt-40">Travel Starter</h1>
+    <p class="text-lg text-blue-950 mt-6">あなたの旅が、ここから始まる</p>
     <div class="mt-6 flex space-x-10">
-        <%= link_to new_user_path, class: "btn btn-primary rounded shadow-lg" do %>
-        今すぐはじめる
+        <%= link_to new_user_path, class: "btn btn-primary rounded shadow-2xl mt-6" do %>
+        はじめる
         <% end %>
-        <%= link_to login_path, class: "btn btn-secondary rounded shadow-lg" do %>
+        <%= link_to login_path, class: "btn btn-secondary rounded shadow-2xl mt-6" do %>
         ログイン
         <% end %>
     </div>
+    <div class="mouse animate-nudge-mouse mt-[10rem]"></div>
+    <p class="text animate-nudge-text mt-2">Scroll</p>
 </div>
 
 <div class="flex flex-col justify-center items-center py-20">
