@@ -4,8 +4,14 @@
 
 import { application } from "./application"
 
+import DateRangeController from "./date_range_controller"
+application.register("date-range", DateRangeController)
+
 import FormResetController from "./form_reset_controller"
 application.register("form-reset", FormResetController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import SpinerController from "./spiner_controller"
+application.register("spiner", SpinerController)
