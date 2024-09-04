@@ -14,12 +14,12 @@
     <p class="text animate-nudge-text mt-2">Scroll</p>
 </div>
 
-<div class="flex flex-col justify-start items-start py-20 mt-10" style="padding-left: 4rem;">
-<h1 class="text-2xl sm:text-3xl font-bold mb-6 text-left">
+<div class="flex flex-col justify-start items-start py-20 mt-10" style="padding-left: 3rem;">
+<h1 class="text-xl sm:text-2xl font-bold mb-6 text-left">
   <span class="font-caveat" style="font-family: 'Caveat', cursive;">Travel Starter</span>
   <span class="font-zen" style="font-family: 'Zen Maru Gothic', serif;">とは？</span>
 </h1>
-  <p class="text-left text-xs sm:text-base" style="line-height: 2;">
+  <p class="text-left text-xs sm:text-base" style="line-height: 1.6;">
   「海外旅行に行ってみたい！でも、何を準備すればいいのかわからない…」<br>
   そんなふうに感じたことはありませんか？<br>
   Travel Starterは、あなたの旅行準備をサポートするアプリです。<br>
@@ -29,88 +29,95 @@
   </p>
 </div>
 
-<div class="flex flex-col justify-start items-start py-6" style="padding-left: 4rem;">
-<h1 class="text-2xl sm:text-3xl font-bold mb-6">
+<div class="flex flex-col justify-start items-start py-6" style="padding-left: 3rem;">
+<h1 class="text-xl sm:text-2xl font-bold mb-6">
   <span class="font-caveat" style="font-family: 'Caveat', cursive;">Travel Starter</span>
   <span class="font-zen" style="font-family: 'Zen Maru Gothic', serif;">でできること</span>
 </h1>
+<p class="text-left text-xs sm:text-base" style="line-height: 1.6;">
+  横にスクロールができます▶️<br>
+</p>
 
-<div class="carousel rounded-box space-x-4 mt-6 overflow-x-scroll">
-  <div class="carousel-item pl-6 pr-8">
-    <div class="card glass w-full max-w-xs mx-auto">
-      <div class="card-body justify-center items-center">
-      <%= link_to "旅を登録する", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-xs">行き先・出発日・帰国日を登録できます。</p>
-        <a href="https://gyazo.com/9c49de841f684c81fec7cdfefc94b1bb"><img src="https://i.gyazo.com/9c49de841f684c81fec7cdfefc94b1bb.png" alt="Image from Gyazo" width="650"/></a>
-      </div>
-    </div>
-  </div>
 
-  <div class="carousel-item pl-6 pr-8">
-    <div class="card glass w-full max-w-xs mx-auto">
-      <div class="card-body justify-center items-center">
-      <%= link_to "TO DO", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-xs">行き先に応じてTO DOリストが作成されます。<br>
-        任意でTO DOを追加することも可能です。</p>
-        <a href="https://gyazo.com/dc5b909580609ab49c591c08de3cfce5"><video width="616" autoplay muted loop playsinline><source src="https://i.gyazo.com/dc5b909580609ab49c591c08de3cfce5.mp4" type="video/mp4"/></video></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="carousel-item pl-6 pr-8">
-    <div class="card glass w-full max-w-xs mx-auto">
-      <div class="card-body justify-center items-center">
-      <%= link_to "パスポート", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-left text-xs">
-        パスポートの写真を保存・拡大表示ができます。<br>
-        </p>
-        <a href="https://gyazo.com/dcf9308892a7b29151d389551f8aa3ff"><video width="748" autoplay muted loop playsinline><source src="https://i.gyazo.com/dcf9308892a7b29151d389551f8aa3ff.mp4" type="video/mp4"/></video></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="carousel-item pl-6 pr-8">
-    <div class="card glass w-full max-w-xs mx-auto px-4">
-      <div class="card-body justify-center items-center">
-      <%= link_to "スケジュール", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-left text-xs">あなたの旅の一覧を確認できます。<br>
-        「詳細」から、各旅に必要なTO DOリストをチェックし、必要に応じて旅の編集や削除も行えます。
-        </p>
-        <a href="https://gyazo.com/eba8fd47dc3abaae8c9f323d9c2c0bdc"><img src="https://i.gyazo.com/eba8fd47dc3abaae8c9f323d9c2c0bdc.png" alt="Image from Gyazo" width="501"/></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="carousel-item pl-6 pr-8">
-    <div class="card glass w-full max-w-xs mx-auto px-4">
-      <div class="card-body justify-center items-center">
-      <%= link_to "フライト", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-left text-xs">フライトに関するガイドです。<br>
-        <div class="text-left text-xs">
-        ・空港でのチェックインから搭乗までの流れ<br>
-        ・機内での快適な過ごし方<br>
-        ・機内持ち込み品の制限<br>
-        ・時差ボケ対策のコツ<br>
-        ・機内食に関するアドバイス<br>
+<div class="overflow-x-auto w-full max-w-full">
+  <div class="carousel rounded-box mt-6 overflow-x-auto max-w-full flex flex-row">
+    <div class="carousel-item pr-6 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto">
+        <div class="card-body justify-center items-center">
+        <%= link_to "旅を登録する", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-xs sm:text-base">行き先・出発日・帰国日を登録できます。</p>
+          <a href="https://gyazo.com/9c49de841f684c81fec7cdfefc94b1bb"><img src="https://i.gyazo.com/9c49de841f684c81fec7cdfefc94b1bb.png" alt="Image from Gyazo" width="650"/></a>
         </div>
-        <br>
-        </p>
-        <a href="https://gyazo.com/f4d38c95bb26e6c2291221a4c84ed9d5"><img src="https://i.gyazo.com/f4d38c95bb26e6c2291221a4c84ed9d5.png" alt="Image from Gyazo" width="573"/></a>
       </div>
     </div>
-  </div>
 
-  <div class="carousel-item pl-6 pr-6">
-    <div class="card glass w-full max-w-xs mx-auto px-4">
-      <div class="card-body justify-center items-center">
-      <%= link_to "chat bot", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
-        <p class="mt-4 text-left text-xs">
-        chat botで、旅行に関する質問ができます。<br>
-        気になることがあれば、AIがすぐにお答えします。
-        <br>
-        </p>
-        <a href="https://gyazo.com/ac4d3a05d45a2e12329919dada5601db"><img src="https://i.gyazo.com/ac4d3a05d45a2e12329919dada5601db.png" alt="Image from Gyazo" width="498"/></a>
+    <div class="carousel-item pl-6 pr-8 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto flex-shrink-0">
+        <div class="card-body justify-center items-center">
+        <%= link_to "TO DO", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-xs sm:text-base">行き先に応じてTO DOリストが作成されます。<br>
+          任意でTO DOを追加することも可能です。</p>
+          <a href="https://gyazo.com/dc5b909580609ab49c591c08de3cfce5"><video width="616" autoplay muted loop playsinline><source src="https://i.gyazo.com/dc5b909580609ab49c591c08de3cfce5.mp4" type="video/mp4"/></video></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item pl-6 pr-8 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto">
+        <div class="card-body justify-center items-center">
+        <%= link_to "パスポート", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-left text-xs sm:text-base">
+          パスポートの写真を保存・拡大表示ができます。<br>
+          </p>
+          <a href="https://gyazo.com/dcf9308892a7b29151d389551f8aa3ff"><video width="748" autoplay muted loop playsinline><source src="https://i.gyazo.com/dcf9308892a7b29151d389551f8aa3ff.mp4" type="video/mp4"/></video></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item pl-6 pr-8 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto px-4">
+        <div class="card-body justify-center items-center">
+        <%= link_to "スケジュール", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-left text-xs sm:text-base">あなたの旅の一覧を確認できます。<br>
+          「詳細」から、各旅に必要なTO DOリストをチェックし、必要に応じて旅の編集や削除も行えます。
+          </p>
+          <a href="https://gyazo.com/eba8fd47dc3abaae8c9f323d9c2c0bdc"><img src="https://i.gyazo.com/eba8fd47dc3abaae8c9f323d9c2c0bdc.png" alt="Image from Gyazo" width="501"/></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item pl-6 pr-8 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto px-4">
+        <div class="card-body justify-center items-center">
+        <%= link_to "フライト", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-left text-xs sm:text-base">フライトに関するガイドです。<br>
+          <div class="text-left text-xs sm:text-base">
+          ・空港でのチェックインから搭乗までの流れ<br>
+          ・機内での快適な過ごし方<br>
+          ・機内持ち込み制限品について<br>
+          ・時差ボケ対策のコツ<br>
+          ・機内食に関するアドバイス<br>
+          </div>
+          <br>
+          </p>
+          <a href="https://gyazo.com/f4d38c95bb26e6c2291221a4c84ed9d5"><img src="https://i.gyazo.com/f4d38c95bb26e6c2291221a4c84ed9d5.png" alt="Image from Gyazo" width="573"/></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item pl-6 pr-8 w-full max-w-xs mx-auto flex-shrink-0">
+      <div class="card glass w-full max-w-xs mx-auto px-4">
+        <div class="card-body justify-center items-center">
+        <%= link_to "chat bot", "javascript:void(0);", class: "inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 border-2 border-transparent rounded-lg py-3 px-6 font-extrabold mt-10", style: "border-image: linear-gradient(to right, #2563EB, #059669) 1;" %>
+          <p class="mt-4 text-left text-xs sm:text-base">
+          chat botで、旅行に関する質問ができます。<br>
+          気になることがあれば、AIがすぐにお答えします。
+          <br>
+          </p>
+          <a href="https://gyazo.com/ac4d3a05d45a2e12329919dada5601db"><img src="https://i.gyazo.com/ac4d3a05d45a2e12329919dada5601db.png" alt="Image from Gyazo" width="498"/></a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
