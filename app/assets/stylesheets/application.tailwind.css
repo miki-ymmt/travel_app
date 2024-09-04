@@ -17,10 +17,17 @@
     }
 }
 
-.bg-sky {
+.bg-sky:before {
+    content: "";
+    display: block;
     background-image: url('sky_2.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: center top;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -1;
 }
 
 .card-background {
