@@ -4,9 +4,6 @@
 [![Image from Gyazo](https://i.gyazo.com/22d1304c6d6078fbb3728dd1984af90f.jpg)](https://gyazo.com/22d1304c6d6078fbb3728dd1984af90f)
 <br>
 
-### テストアカウント(パスワードリセットはできません)
-- email: test@example.com<br>
-- password: password
 
 ## ■　サービス概要
 「Travel Starter」は、海外旅行が不慣れな人に向けて必要な情報を一元管理し、必要な準備のサポートをするサービスです。<br>
