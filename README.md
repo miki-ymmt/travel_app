@@ -140,7 +140,7 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 
 | パスポート写真登録機能 | フライトサポート機能 |
 | ---- | ---- |
-| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="300" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="300" height="195"/></a> |
+| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="290" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="300" height="195"/></a> |
 | パスポートの写真を登録・削除・拡大できます。 | フライトに向けて知っておくと便利な情報が確認できます。 |
 
 | chatbot機能 | 天気・気温情報表示機能 |
