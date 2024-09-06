@@ -137,18 +137,18 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 
 | パスポート写真登録機能 | フライトサポート機能 |
 | ---- | ---- |
-| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="290" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="290" height="195"/></a> |
-| パスポートの写真を登録・削除・拡大できます。 | フライトに向けて知っておくと便利な情報が確認できます。|
+| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="290" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="290" height="190"/></a> |
+| パスポートの写真を登録・削除・拡大できます。| フライトに向けて知っておくと便利な情報が確認できます。|
 
 | chatbot機能 | 天気・気温情報表示機能 |
 | ---- | ---- |
-| <a href="https://gyazo.com/73f5eff9b12c9ae2e117f633b04ef243"><img src="https://i.gyazo.com/73f5eff9b12c9ae2e117f633b04ef243.gif" alt="Image from Gyazo" width="300" height="190"/></a> | <a href="https://gyazo.com/1989484fb1adcfc82436cbfc49255844"><img src="https://i.gyazo.com/1989484fb1adcfc82436cbfc49255844.gif" alt="Image from Gyazo" width="300" height="190"/></a> |
-| AIに旅について気になることを気軽に聞けます。 | ボタンをクリックすると直近の旅先の天気と気温が表示されます。定期的に新しい情報に更新されます。|
+| <a href="https://gyazo.com/73f5eff9b12c9ae2e117f633b04ef243"><img src="https://i.gyazo.com/73f5eff9b12c9ae2e117f633b04ef243.gif" alt="Image from Gyazo" width="290" height="190"/></a> | <a href="https://gyazo.com/1989484fb1adcfc82436cbfc49255844"><img src="https://i.gyazo.com/1989484fb1adcfc82436cbfc49255844.gif" alt="Image from Gyazo" width="300" height="190"/></a> |
+| AIに旅について気になることを気軽に聞けます。| ボタンをクリックすると直近の旅先の天気と気温が表示されます。定期的に新しい情報に更新されます。|
 
 | プロフィール編集 | LINE通知機能 |
 | ---- | ---- |
 | <a href="https://gyazo.com/cf7b235fbb756cae099097489c18ec35"><img src="https://i.gyazo.com/cf7b235fbb756cae099097489c18ec35.gif" alt="Image from Gyazo" width="300" height="190"/></a> | <a href="https://gyazo.com/799f8935404f37dc6ddd48d95353eecf"><img src="https://i.gyazo.com/799f8935404f37dc6ddd48d95353eecf.jpg" alt="Image from Gyazo" width="300" height="190"/></a> |
-| メールアドレス、名前を変更できます。 | 旅詳細画面からLINEと連携すると、旅の7日前、3日前、1日前の朝9時にメッセージが届きます。|
+| メールアドレス、名前を変更できます。| 旅詳細画面からLINEと連携すると、旅の7日前、3日前、1日前の朝9時にメッセージが届きます。|
 
 
 
