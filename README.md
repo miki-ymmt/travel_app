@@ -159,7 +159,7 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 :----|:----
 | フロントエンド | Rails 7.1.3.4（Hotwire/Turbo/Stimulus）, JavaScript, TailwindCSS, DaisyUI |
 | バックエンド | Rails 7.1.3.4 (Ruby 3.2.2 )  |
-| インフラ | Render.com |
+| インフラ | Render.com, AWS S3 |
 | データベース | PostgreSQL |
 | 認証 | Sorcery, Googleログイン, LINE認証 |
 | 開発環境 | Docker |
