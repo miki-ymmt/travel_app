@@ -1,4 +1,4 @@
-<%= form_with(model: [ @trip, todo ], url: add_todo_trip_path(@trip), data: { turbo_frame: "todo-form" }) do |f| %>
+<%= form_with(model: [ @trip, todo ], url: add_todo_trip_path(@trip), data: { controller: "form-reset-add-todo", action: "turbo:submit-end->form-reset-add-todo#reset", turbo_frame: "todo-form" }) do |f| %>
   <div class="flex items-end space-x-2">
     <div class="flex-grow">
       <div class="form-group mt-6">
