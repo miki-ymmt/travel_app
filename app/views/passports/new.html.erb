@@ -13,14 +13,13 @@
     <div class="flex justify-center items-center space-x-4 mb-8">
       <%= form_with model: @passport, data: { turbo_frame: 'passport-photo' } do |form| %>
         <%= render 'shared/error_messages', object: form.object %>
+
         <div class="flex items-center p-2 rounded-md">
-          <label class="w-[212px] sm:w-[164px] h-8 border border-primary-300 bg-white text-primary-300 rounded-[3px] text-base flex justify-center items-center cursor-pointer">
-            <i class="fas fa-camera-retro mr-2"></i>
-            <span>画像を選択</span>
-            <%= form.file_field :photo, class: "hidden", accept: 'image/*' %>
+          <label class="flex items-center">
+            <%= form.file_field :photo, accept: 'image/*' %>
           </label>
         </div>
-        <div class="mt-4 flex justify-center items-center">
+        <div class="mt-12 flex justify-center items-center">
           <%= form.submit "アップロード", class: "bg-yellow-400 hover:bg-yellow-600 btn btn-primary font-bold px-6 py-3 hover:shadow-sm hover:translate-y-0.5 transform transition rounded shadow-lg ml-4" %>
         </div>
       <% end %>
