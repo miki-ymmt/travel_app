@@ -7,6 +7,9 @@ import { application } from "./application"
 import DateRangeController from "./date_range_controller"
 application.register("date-range", DateRangeController)
 
+import FormResetAddTodoController from "./form_reset_add_todo_controller"
+application.register("form-reset-add-todo", FormResetAddTodoController)
+
 import FormResetController from "./form_reset_controller"
 application.register("form-reset", FormResetController)
 
