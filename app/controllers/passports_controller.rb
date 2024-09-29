@@ -2,10 +2,10 @@
 
 class PassportsController < ApplicationController
   before_action :require_login, only: %i[new create update]
-  before_action :set_passport, only: %i[new create update]
+  before_action :set_passport, only: %i[update destroy]
 
   def new
-    @passport = Passport.find_or_initialize_by(user: current_user) # ユーザーに紐づくパスポートが存在する場合は取得、存在しない場合は新規作成
+    @passport = Passport.new
   end
 
   def create
