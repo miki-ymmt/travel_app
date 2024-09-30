@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe LineUser, type: :model do
-
   let(:line_user) { build(:line_user) }
 
   describe 'アソシエーション' do
