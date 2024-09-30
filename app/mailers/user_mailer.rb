@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# このファイルは、パスワードリセットのメールを送信するためのメーラークラスです。
+
 class UserMailer < ApplicationMailer
   default from: 'from@example.com'
 
@@ -11,6 +13,6 @@ class UserMailer < ApplicationMailer
   def reset_password_email(user)
     @user = User.find(user.id)
     @url  = edit_password_reset_url(@user.reset_password_token)
-    mail(to: @user.email, subject: 'パスワードリセットのお知らせ')
+    mail(to: @user.email, subject: t('mailers.password_reset.subject'))
   end
 end

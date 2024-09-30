@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Tripは、ユーザーが計画する旅行を管理するためのモデルです。
+# 出発日、帰国日、目的地など、旅行に関連する情報を保持します。
+
 class Trip < ApplicationRecord
   belongs_to :user
   has_many :todos, dependent: :destroy
@@ -23,7 +26,7 @@ class Trip < ApplicationRecord
     weathers.create(
       temperature: weather_data['main']['temp'],
       description: weather_data['weather'][0]['description'],
-      datetime: Time.at(weather_data['dt']),
+      datetime: Time.zone.at(weather_data['dt']),
       fetched_at: Time.current
     )
   end

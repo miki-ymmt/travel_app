@@ -1,0 +1,28 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
+
+RSpec:
+  Enabled: true
+
+Metrics:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 150
+
+RSpec/ContextWording:
+  Enabled: false
+
+Lint/DuplicateBranch:
+  Enabled: false

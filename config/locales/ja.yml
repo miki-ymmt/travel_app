@@ -1,0 +1,49 @@
+ja:
+  messages:
+    login_required: "ログインしてください"
+  sessions:
+    create:
+      success: "ログインしました"
+      failure: "ログインに失敗しました"
+    destroy:
+      success: "ログアウトしました"
+  passports:
+    create:
+      success: "パスポート写真を保存しました"
+      failure: "パスポート写真の保存に失敗しました"
+    update:
+      success: "パスポート写真を更新しました"
+      failure: "パスポート写真の更新に失敗しました"
+    destroy:
+      success: "パスポート写真を削除しました"
+  trips:
+    create:
+      success: "旅行を作成しました"
+      failure: "旅行の作成に失敗しました"
+    update:
+      success: "旅行情報が更新されました"
+      failure: "旅行情報の更新に失敗しました"
+    destroy:
+      success: "旅行を削除しました"
+  users:
+    create:
+      success: "アカウントを作成しました"
+      failure: "アカウントの作成に失敗しました"
+    update:
+      success: "アカウント情報が更新されました"
+      failure: "アカウント情報の更新に失敗しました"
+    destroy:
+      success: "アカウントを削除しました"
+  mailers:
+    password_reset:
+      subject: "パスワードリセットのお知らせ"
+  password_resets:
+    create:
+      success: "パスワードリセットのメールを送信しました"
+      failure: "ユーザーが見つかりません"
+    update:
+      success: "パスワードを更新しました"
+      failure: "パスワードを更新できませんでした"
+  line_auth:
+    success: "LINEアカウントを連携しました"
+    failure: "LINEアカウントの連携に失敗しました"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe PassportsController, type: :controller do
@@ -9,7 +11,7 @@ RSpec.describe PassportsController, type: :controller do
       login_user(user)
     end
 
-    context '有効な属性値の場合' do
+    context '有効な属性値のとき' do
       it 'パスポート写真を保存できること' do
         expect do
           post :create, params: { passport: attributes_for(:passport) }
@@ -17,7 +19,7 @@ RSpec.describe PassportsController, type: :controller do
       end
     end
 
-    context '無効な属性値の場合' do
+    context '無効な属性値のとき' do
       it 'パスポート写真を保存できないこと' do
         expect do
           post :create, params: { passport: attributes_for(:passport, photo: nil) }
@@ -33,7 +35,7 @@ RSpec.describe PassportsController, type: :controller do
 
     let!(:passport) { create(:passport, user:) }
 
-    context '有効な属性値の場合' do
+    context '有効な属性値のとき' do
       it 'パスポート写真を更新できるここと' do
         patch :update, params: { id: passport.id, passport: attributes_for(:passport) }
         expect(passport.reload.photo.file.filename).to eq Passport.last.photo.file.filename
@@ -45,10 +47,10 @@ RSpec.describe PassportsController, type: :controller do
       end
     end
 
-    context '無効な属性値の場合' do
+    context '無効な属性値のとき' do
       it 'パスポート写真を更新できないこと' do
         patch :update, params: { id: passport.id, passport: attributes_for(:passport, photo: nil) }
-        expect(passport.reload.photo).not_to eq nil
+        expect(passport.reload.photo).not_to be_nil
       end
     end
   end

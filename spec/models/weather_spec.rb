@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Weather, type: :model do
@@ -31,10 +33,18 @@ RSpec.describe Weather, type: :model do
   end
 
   describe '直近の旅行先の天気を取得する' do
-    it '指定されたtrip_idの最新のweatherを取得すること' do
-      trip = create(:trip)
-      create(:weather, trip:, fetched_at: 2.minutes.ago)
-      recent_weather = create(:weather, trip:, fetched_at: 1.minute.ago)
+    let(:trip) { create(:trip) }
+    let!(:older_weather) { create(:weather, trip:, fetched_at: 2.minutes.ago) }
+    let!(:newer_weather) { create(:weather, trip:, fetched_at: 1.minute.ago) }
+
+    it '指定されたtrip_idの最新のweatherを取得できること' do
+      latest_weather = described_class.where(trip:).order(fetched_at: :desc).first
+      expect(latest_weather).to eq(newer_weather)
+    end
+
+    it '最新のweatherが一番新しいfetched_atを持つこと' do
+      latest_weather = described_class.where(trip:).order(fetched_at: :desc).first
+      expect(latest_weather.fetched_at).to be > older_weather.fetched_at
     end
   end
 end

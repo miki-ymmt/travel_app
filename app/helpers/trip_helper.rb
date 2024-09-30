@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TripHelperは、旅行関連のビューで使用されるヘルパーメソッドを提供します。
+
 module TripHelper
   def image_url_for_trip(trip)
     case trip.destination

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# SendTripReminderJobは、ユーザーに旅行のリマインダー通知を送信するジョブです。
+
 class SendTripReminderJob < ApplicationJob
   queue_as :default
 

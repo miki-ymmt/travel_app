@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# OauthsControllerは、OAuth認証を処理するためのコントローラーです。
+# ユーザーがGoogleを使ってログインできるようにします。
+
 class OauthsController < ApplicationController
   skip_before_action :require_login
 

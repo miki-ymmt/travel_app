@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# PhotoUploaderは、CarrierWaveを使用して画像ファイル（パスポート写真など）をアップロードするためのクラスです。
+# 画像の保存先の指定を行います。
+
 class PhotoUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

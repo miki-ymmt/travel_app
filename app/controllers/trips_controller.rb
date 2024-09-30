@@ -1,27 +1,14 @@
 # frozen_string_literal: true
 
+# TripsControllerは、ユーザーの旅行情報を管理するためのコントローラーです。
+# 旅行の作成、編集、削除、およびToDoリストの管理を行います。
+
 class TripsController < ApplicationController
   before_action :require_login
   before_action :set_trip, only: %i[show edit update destroy todos add_todo update_todo destroy_todo]
 
   def index
     @trips = current_user.trips.order(:departure_date)
-  end
-
-  def new
-    @trip = Trip.new
-  end
-
-  def create
-    @trip = Trip.new(trip_params) # フォームから送信されたパラメータを元に旅行を作成
-    @trip.user = current_user # 旅行を作成したユーザーを設定
-    if @trip.save # 旅行の保存に成功した場合
-      add_default_todos(@trip) # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
-      redirect_to @trip, notice: '旅行を作成しました'
-    else
-      flash.now[:alert] = '旅行の作成に失敗しました'
-      render :new, status: :unprocessable_entity
-    end
   end
 
   def show
@@ -31,12 +18,28 @@ class TripsController < ApplicationController
     @default_todo = default_todos_for(@trip.destination) # 旅行先に応じたデフォルトのToDoを取得
   end
 
+  def new
+    @trip = Trip.new
+  end
+
+  def edit; end
+
+  def create
+    @trip = Trip.new(trip_params) # フォームから送信されたパラメータを元に旅行を作成
+    @trip.user = current_user # 旅行を作成したユーザーを設定
+    if @trip.save # 旅行の保存に成功した場合
+      add_default_todos(@trip) # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
+      redirect_to @trip, notice: t('.success')
+    else
+      flash.now[:alert] = t('.failure')
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def todos
     @todos = @trip.todos # 旅行に紐づくToDoを取得
     @new_todo = Todo.new # 新しいToDoを作成するためのインスタンスを作成
   end
-
-  def edit; end
 
   def update
     if @trip.update(trip_params) # 旅行情報を更新
@@ -45,24 +48,33 @@ class TripsController < ApplicationController
         add_default_todos(@trip) # default_todos_for メソッドを使って旅行先に応じたデフォルトのToDoを追加
         @trip.update_weather_if_destination_changed # 旅行先が変更された場合は天気情報を更新
       end
-      redirect_to @trip, notice: '旅行情報が更新されました'
+      redirect_to @trip, notice: t('.success')
     else
+      flash.now[:alert] = t('.failure')
       render :edit
     end
   end
 
   def destroy
     @trip.destroy
-    redirect_to trips_path, notice: '旅行を削除しました'
+    redirect_to trips_path, notice: t('.success')
   end
 
   # 特定の旅行に対して新しいToDoを追加するアクション
   def add_todo
     @todo = @trip.todos.build(todo_params) # 旅行に紐づくToDoを作成
     if @todo.save
-      render turbo_stream: turbo_stream.append('todo-list', partial: 'trips/todo', locals: { todo: @todo }) # Turbo Stream を使ってToDoを追加
+      render turbo_stream: turbo_stream.append(
+        'todo-list',
+        partial: 'trips/todo',
+        locals: { todo: @todo }
+      ) # Turbo Stream を使ってToDoを追加
     else
-      render turbo_stream: turbo_stream.replace('todo_form', partial: 'trips/todo_form', locals: { todo: @todo }), status: :unprocessable_entity # エラーが発生した場合はエラーメッセージを表示
+      render turbo_stream: turbo_stream.replace(
+        'todo_form',
+        partial: 'trips/todo_form',
+        locals: { todo: @todo }
+      ), status: :unprocessable_entity # エラーが発生した場合はエラーメッセージを表示
     end
   end
 
@@ -71,9 +83,17 @@ class TripsController < ApplicationController
     @todo = @trip.todos.find(params[:todo_id]) # 特定のToDoを取得
 
     if @todo.update(todo_params) # ToDoを更新
-      render turbo_stream: turbo_stream.replace("todo-#{@todo.id}", partial: 'trips/todo', locals: { todo: @todo }) # Turbo Stream を使ってToDoを更新
+      render turbo_stream: turbo_stream.replace(
+        "todo-#{@todo.id}",
+        partial: 'trips/todo',
+        locals: { todo: @todo }
+      ) # Turbo Stream を使ってToDoを更新
     else
-      render turbo_stream: turbo_stream.replace("todo-form#{@todo.id}", partial: 'trips/todo_form', locals: { todo: @todo }), status: :unprocessable_entity # エラーが発生した場合はエラーメッセージを表示
+      render turbo_stream: turbo_stream.replace(
+        "todo-form#{@todo.id}",
+        partial: 'trips/todo_form',
+        locals: { todo: @todo }
+      ), status: :unprocessable_entity # エラーが発生した場合はエラーメッセージを表示
     end
   end
 

@@ -1,11 +1,21 @@
 # frozen_string_literal: true
 
+# UsersControllerは、ユーザーの登録、編集、更新、削除などの操作を管理するコントローラです。
+
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
   before_action :set_locale
 
+  def show
+    @user = current_user
+  end
+
   def new
     @user = User.new
+  end
+
+  def edit
+    @user = current_user
   end
 
   def create
@@ -13,26 +23,19 @@ class UsersController < ApplicationController
 
     if @user.save
       auto_login(@user)
-      redirect_to home_path, notice: 'アカウントを作成しました'
+      redirect_to home_path, notice: t('.success')
     else
-      flash.now[:alert] = 'アカウントの作成に失敗しました'
+      flash.now[:alert] = t('.failure')
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @user = current_user
-  end
-
-  def edit
-    @user = current_user
   end
 
   def update
     @user = current_user
     if @user.update(user_params)
-      redirect_to @user, notice: 'アカウント情報が更新されました。'
+      redirect_to @user, notice: t('.success')
     else
+      flash.now[:alert] = t('.failure')
       render :edit
     end
   end
@@ -41,7 +44,7 @@ class UsersController < ApplicationController
     @user = current_user
     @user.destroy
     reset_session
-    redirect_to root_path, status: :see_other, notice: 'アカウントを削除しました。'
+    redirect_to root_path, status: :see_other, notice: t('.success')
   end
 
   private

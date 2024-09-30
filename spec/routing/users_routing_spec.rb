@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Routing to users', type: :routing do
@@ -17,9 +19,12 @@ RSpec.describe 'Routing to users', type: :routing do
     expect(get: '/users/1/edit').to route_to('users#edit', id: '1')
   end
 
-  it 'routes to #update' do
+  it 'routes post to #update' do
+    expect(post: '/users/1').to route_to('users#update', id: '1')
+  end
+
+  it 'routes patch to #update' do
     expect(patch: '/users/1').to route_to('users#update', id: '1')
-    expect(put: '/users/1').to route_to('users#update', id: '1')
   end
 
   it 'routes to #destroy' do

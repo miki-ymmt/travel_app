@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# LineAuthControllerは、LINEアカウントの認証を行うためのコントローラーです。
+# ユーザーがLINEと連携し、アカウント情報を取得する機能を提供します。
+
 class LineAuthController < ApplicationController
   def link
     redirect_to line_login_url, allow_other_host: true # LINE認証ページにリダイレクト
@@ -9,7 +12,7 @@ class LineAuthController < ApplicationController
   def callback
     response = get_line_token(params[:code]) # LINEログイン成功後にLINEから返されるコードを取得
     line_user_id = get_line_user_id(response) # LINEユーザーIDを取得
-    Rails.logger.debug "Retrieved LINE user ID: #{line_user_id}"
+    Rails.logger.debug { "Retrieved LINE user ID: #{line_user_id}" }
 
     # 既存のLineUserがない場合は、新しいLineUserを作成
     if current_user.line_user.nil?
@@ -23,10 +26,10 @@ class LineAuthController < ApplicationController
 
     if current_user.save
       Rails.logger.debug 'Successfully linked LINE account'
-      redirect_to home_path, notice: 'LINEアカウントを連携しました'
+      redirect_to home_path, notice: t('line_auth.success')
     else
       Rails.logger.error 'Failed to link LINE account'
-      redirect_to home_path, alert: 'LINEアカウントの連携に失敗しました'
+      redirect_to home_path, alert: t('line_auth.failure')
     end
   end
 
@@ -34,7 +37,7 @@ class LineAuthController < ApplicationController
 
   # LINE認証ページのURLを生成
   def line_login_url
-    client_id = ENV['LINE_LOGIN_CHANNEL_ID']
+    client_id = ENV.fetch('LINE_LOGIN_CHANNEL_ID', nil)
     redirect_uri = line_auth_callback_url
     state = SecureRandom.hex(10) # CSRF対策のためのstateパラメータ
     scope = 'profile openid' # プロフィール情報を取得するためのスコープ
@@ -45,8 +48,8 @@ class LineAuthController < ApplicationController
 
   # 認証コードを使ってアクセストークンを取得
   def get_line_token(code)
-    client_id = ENV['LINE_LOGIN_CHANNEL_ID']
-    client_secret = ENV['LINE_LOGIN_CHANNEL_SECRET']
+    client_id = ENV.fetch('LINE_LOGIN_CHANNEL_ID', nil)
+    client_secret = ENV.fetch('LINE_LOGIN_CHANNEL_SECRET', nil)
     redirect_uri = line_auth_callback_url
 
     response = HTTParty.post('https://api.line.me/oauth2/v2.1/token', {

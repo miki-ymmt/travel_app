@@ -138,7 +138,10 @@ Rails.application.config.sorcery.configure do |config|
   # config.instagram.secret = ""
   # config.instagram.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=instagram"
   # config.instagram.user_info_mapping = {:email => "username"}
-  # config.instagram.access_permissions = ["basic", "public_content", "follower_list", "comments", "relationships", "likes"]
+  # config.instagram.access_permissions = [
+  #    "basic", "public_content", "follower_list",
+  #    "comments", "relationships", "likes"
+  # ]
   #
   # config.github.key = ""
   # config.github.secret = ""
@@ -162,10 +165,10 @@ Rails.application.config.sorcery.configure do |config|
   # config.auth0.callback_url = "https://0.0.0.0:3000/oauth/callback?provider=auth0"
   # config.auth0.site = "https://example.auth0.com"
   # .envファイルに設定したAPIキーを取得する
-  config.google.key = ENV['GOOGLE_CLIENT_ID']
-  config.google.secret = ENV['GOOGLE_CLIENT_SECRET']
+  config.google.key = ENV.fetch('GOOGLE_CLIENT_ID', nil)
+  config.google.secret = ENV.fetch('GOOGLE_CLIENT_SECRET', nil)
   # API設定で承認のリダイレクトURIとして設定したもの
-  config.google.callback_url = ENV['GOOGLE_CALLBACK_URL']
+  config.google.callback_url = ENV.fetch('GOOGLE_CALLBACK_URL', nil)
   # 外部サービスから取得するユーザー情報をどのようにuserモデルにマッピングするかを指定
   config.google.user_info_mapping = { email: 'email', name: 'name' }
   # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"

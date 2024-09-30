@@ -55,7 +55,7 @@ Rails.application.configure do
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new($stdout)
-                                       .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
+                                       .tap  { |logger| logger.formatter = Logger::Formatter.new }
                                        .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
@@ -82,12 +82,15 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'adventure-travel-starter.com',
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV['GMAIL_PASSWORD'],
+    user_name: ENV.fetch('GMAIL_USERNAME', nil),
+    password: ENV.fetch('GMAIL_PASSWORD', nil),
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: 'adventure-travel-starter.com', protocol: 'https' } # メール内に記載されるURLにホスト名を設定
+  config.action_mailer.default_url_options = {
+    host: 'adventure-travel-starter.com',
+    protocol: 'https'
+  } # メール内に記載されるURLにホスト名を設定
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

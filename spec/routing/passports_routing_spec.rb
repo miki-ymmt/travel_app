@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Routing to passports', type: :routing do
@@ -17,8 +19,11 @@ RSpec.describe 'Routing to passports', type: :routing do
     expect(get: '/passports/1/edit').to route_to('passports#edit', id: '1')
   end
 
-  it 'routes to #update' do
+  it 'routes patch to #update' do
     expect(patch: '/passports/1').to route_to('passports#update', id: '1')
+  end
+
+  it 'routes put to #update' do
     expect(put: '/passports/1').to route_to('passports#update', id: '1')
   end
 
