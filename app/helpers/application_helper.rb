@@ -8,6 +8,7 @@ module ApplicationHelper
     when :notice, :default then 'bg-blue-300'
     when :alert then 'bg-orange-300'
     when :error then 'bg-yellow-200'
+    else 'bg-blue-300' # デフォルト値
     end
   end
 end

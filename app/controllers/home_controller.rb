@@ -15,7 +15,9 @@ class HomeController < ApplicationController
       # キャッシュが存在しない場合はAPIから取得
       @weather_info = fetch_or_get_cashed_weather(@next_trip)
       Rails.logger.debug { "@weather_info: #{@weather_info.inspect}" }
-      Rails.logger.debug { "@weather_info[:description]: #{@weather_info[:description].inspect}" } # デバッグ情報を追加
+      if @weather_info
+        Rails.logger.debug { "@weather_info[:description]: #{@weather_info[:description].inspect}" } # デバッグ情報を追加
+      end
     else
       Rails.logger.debug { "No upcoming trip found for user: #{current_user.id}" } # デバッグ情報を追加
     end

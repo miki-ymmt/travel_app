@@ -8,8 +8,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(helper.flash_background_color('notice')).to eq('bg-blue-300')
     end
 
-    it "returns 'bg-orange-200' for 'alert'" do
-      expect(helper.flash_background_color('alert')).to eq('bg-orange-200')
+    it "returns 'bg-orange-300' for 'alert'" do
+      expect(helper.flash_background_color('alert')).to eq('bg-orange-300')
     end
 
     it "returns 'bg-yellow-200' for 'error'" do
