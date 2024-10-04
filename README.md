@@ -20,6 +20,43 @@ Travel Starterを使うことで、海外旅行に行く際の不安を軽減し
 初めての海外旅行を計画している方<br>
 国際線を利用する方<br>
 
+## ■　使い方イメージ
+
+| スケジュール作成機能 | TO DOリスト |
+| ---- | ---- |
+| <a href="https://gyazo.com/b39cecd3a345c8668299784ab2f62b77"><img src="https://i.gyazo.com/b39cecd3a345c8668299784ab2f62b77.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/10d3b1f740afd5c2664ae9c47171d475"><img src="https://i.gyazo.com/10d3b1f740afd5c2664ae9c47171d475.gif" alt="Image from Gyazo" width="320" height="190"/></a> |
+| 行き先、出発日、帰国日を登録できます。| 旅先に応じたTO DOリストを確認できます。チェックボックスは画面遷移をしても内容が保持されます。|
+
+| パスポート写真登録機能 | フライトサポート機能 |
+| ---- | ---- |
+| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="300" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="300" height="190"/></a> |
+| パスポートの写真を登録・削除・拡大できます。| フライトに向けて知っておくと便利な情報が確認できます。|
+
+| chatbot機能 | 天気・気温情報表示機能 |
+| ---- | ---- |
+| <a href="https://gyazo.com/73f5eff9b12c9ae2e117f633b04ef243"><img src="https://i.gyazo.com/73f5eff9b12c9ae2e117f633b04ef243.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/1989484fb1adcfc82436cbfc49255844"><img src="https://i.gyazo.com/1989484fb1adcfc82436cbfc49255844.gif" alt="Image from Gyazo" width="320" height="190"/></a> |
+| AIに旅について気になることを気軽に聞けます。| ボタンをクリックすると直近の旅先の天気と気温が表示されます。定期的に新しい情報に更新されます。|
+
+| プロフィール編集 | LINE通知機能 |
+| ---- | ---- |
+| <a href="https://gyazo.com/cf7b235fbb756cae099097489c18ec35"><img src="https://i.gyazo.com/cf7b235fbb756cae099097489c18ec35.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/799f8935404f37dc6ddd48d95353eecf"><img src="https://i.gyazo.com/799f8935404f37dc6ddd48d95353eecf.jpg" alt="Image from Gyazo" width="320" height="190"/></a> |
+| メールアドレス、名前を変更できます。| 旅詳細画面からLINEと連携すると、旅の7日前、3日前、1日前の朝9時にメッセージが届きます。|
+
+
+
+
+## ■ 技術スタック
+
+| カテゴリー | 使用技術 |
+:----|:----
+| フロントエンド | Rails 7.1.3.4（Hotwire/Turbo/Stimulus）, JavaScript, TailwindCSS, DaisyUI |
+| バックエンド | Rails 7.1.3.4 (Ruby 3.2.2 )  |
+| インフラ | Render.com, AWS S3 |
+| データベース | PostgreSQL |
+| 認証 | Sorcery, Googleログイン, LINE認証 |
+| 開発環境 | Docker |
+| API | OpenAI API, LINE Messaging API, OpenWeather API |
+
 
 ## ■　サービスの利用イメージ
 ### 海外旅行の準備を楽しく、かつ簡素化するためのサポート
@@ -125,45 +162,6 @@ OGP画像を作成し、視覚的に分かりやすい情報を提供するこ�
 - アプリの使用方法説明ページ（ログイン前・ログイン後共に閲覧可能）
 - Xへのシェア機能
 - お問い合わせフォーム
-
-
-
-## ■　使い方イメージ
-
-| スケジュール作成機能 | TO DOリスト |
-| ---- | ---- |
-| <a href="https://gyazo.com/b39cecd3a345c8668299784ab2f62b77"><img src="https://i.gyazo.com/b39cecd3a345c8668299784ab2f62b77.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/10d3b1f740afd5c2664ae9c47171d475"><img src="https://i.gyazo.com/10d3b1f740afd5c2664ae9c47171d475.gif" alt="Image from Gyazo" width="320" height="190"/></a> |
-| 行き先、出発日、帰国日を登録できます。| 旅先に応じたTO DOリストを確認できます。チェックボックスは画面遷移をしても内容が保持されます。|
-
-| パスポート写真登録機能 | フライトサポート機能 |
-| ---- | ---- |
-| <a href="https://gyazo.com/ab9b6ba15cca88531cf1e38220574927"><img src="https://i.gyazo.com/ab9b6ba15cca88531cf1e38220574927.gif" alt="Image from Gyazo" width="300" height="190"/></a> | <a href="https://gyazo.com/06db3dd9a8ede5b066342fc937a5f331"><img src="https://i.gyazo.com/06db3dd9a8ede5b066342fc937a5f331.gif" alt="Image from Gyazo" width="300" height="190"/></a> |
-| パスポートの写真を登録・削除・拡大できます。| フライトに向けて知っておくと便利な情報が確認できます。|
-
-| chatbot機能 | 天気・気温情報表示機能 |
-| ---- | ---- |
-| <a href="https://gyazo.com/73f5eff9b12c9ae2e117f633b04ef243"><img src="https://i.gyazo.com/73f5eff9b12c9ae2e117f633b04ef243.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/1989484fb1adcfc82436cbfc49255844"><img src="https://i.gyazo.com/1989484fb1adcfc82436cbfc49255844.gif" alt="Image from Gyazo" width="320" height="190"/></a> |
-| AIに旅について気になることを気軽に聞けます。| ボタンをクリックすると直近の旅先の天気と気温が表示されます。定期的に新しい情報に更新されます。|
-
-| プロフィール編集 | LINE通知機能 |
-| ---- | ---- |
-| <a href="https://gyazo.com/cf7b235fbb756cae099097489c18ec35"><img src="https://i.gyazo.com/cf7b235fbb756cae099097489c18ec35.gif" alt="Image from Gyazo" width="320" height="190"/></a> | <a href="https://gyazo.com/799f8935404f37dc6ddd48d95353eecf"><img src="https://i.gyazo.com/799f8935404f37dc6ddd48d95353eecf.jpg" alt="Image from Gyazo" width="320" height="190"/></a> |
-| メールアドレス、名前を変更できます。| 旅詳細画面からLINEと連携すると、旅の7日前、3日前、1日前の朝9時にメッセージが届きます。|
-
-
-
-
-## ■ 技術スタック
-
-| カテゴリー | 使用技術 |
-:----|:----
-| フロントエンド | Rails 7.1.3.4（Hotwire/Turbo/Stimulus）, JavaScript, TailwindCSS, DaisyUI |
-| バックエンド | Rails 7.1.3.4 (Ruby 3.2.2 )  |
-| インフラ | Render.com, AWS S3 |
-| データベース | PostgreSQL |
-| 認証 | Sorcery, Googleログイン, LINE認証 |
-| 開発環境 | Docker |
-| API | OpenAI API, LINE Messaging API, OpenWeather API |
 
 
 ## ■　画面遷移図
